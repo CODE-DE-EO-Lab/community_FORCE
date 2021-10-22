@@ -10,6 +10,6 @@ This repository collects useful data and examples to run [FORCE](https://github.
 - [How to use the FORCE datacube collection 1 on CODE-DE](https://github.com/CODE-DE-Cloud/community_FORCE/tree/main/FAQ/use-datacube.md)
 
 
-# Aux data
+## Aux data
 
 - Vector geometries for the [datacube grid system](https://github.com/CODE-DE-Cloud/community_FORCE/tree/main/grid/datacube-grid_DEU.gpkg)

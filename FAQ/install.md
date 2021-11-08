@@ -20,6 +20,7 @@ It is best to use a Linux VM.
     The first option is the latest official release.
     The second option refers to a specific version.
     The third option refers to the develop branch that includes the latest cutting-edge features.
+    See [here](https://hub.docker.com/repository/docker/davidfrantz/force) for available tags and versions.
 
 3) Check if this works:
 

@@ -73,8 +73,29 @@ alias dforce=' \
   davidfrantz/force'
 ```
 
-After saving, logging out and in again, the alias is active and can be used like this (same command as the long commandline call above):
+After saving, logging out and in again, the alias is active and can be used like this:
+
+The data are then available under ``/force`` from within the Docker container:
+
+```
+dforce ls /force | head
+```
+```
+CITEME_0x20.txt  X0054_Y0037  X0059_Y0063  X0065_Y0052  X0071_Y0063
+CITEME_0xc0.txt  X0054_Y0038  X0059_Y0064  X0065_Y0053  X0071_Y0064
+CITEME_0xf1.txt  X0054_Y0039  X0059_Y0065  X0065_Y0054  X0071_Y0065
+X0044_Y0052      X0054_Y0040  X0059_Y0066  X0065_Y0055  X0071_Y0066
+X0044_Y0053      X0054_Y0041  X0060_Y0026  X0065_Y0056  X0072_Y0031
+X0045_Y0050      X0054_Y0042  X0060_Y0027  X0065_Y0057  X0072_Y0032
+X0045_Y0051      X0054_Y0043  X0060_Y0028  X0065_Y0058  X0072_Y0033
+X0045_Y0052      X0054_Y0044  X0060_Y0029  X0065_Y0059  X0072_Y0034
+X0045_Y0053      X0054_Y0045  X0060_Y0030  X0065_Y0060  X0072_Y0035
+X0046_Y0047      X0054_Y0046  X0060_Y0031  X0065_Y0061  X0072_Y0036
+```
+
+This here is the same call as before (same command as the long commandline call above):
 
 ```
 dforce force-higher-level $HOME/classification.prm
 ```
+

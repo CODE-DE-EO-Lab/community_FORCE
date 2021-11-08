@@ -48,7 +48,7 @@ It also makes sure that data is created with your current user name.
 docker run \
   -v $HOME:$HOME \
   -v /codede:/codede \
-  -v /codede/community/FORCE/C1/L2:/force
+  -v /codede/community/FORCE/C1/L2:/force \
   -w $PWD \
   -u $(id -u):$(id -g) \
   -t \
@@ -61,9 +61,10 @@ docker run \
 
 ```
 alias dforce=' \
+  docker run \
   -v $HOME:$HOME \
   -v /codede:/codede \
-  -v /codede/community/FORCE/C1/L2:/force
+  -v /codede/community/FORCE/C1/L2:/force \
   -w $PWD \
   -u $(id -u):$(id -g) \
   -t \

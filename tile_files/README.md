@@ -1,6 +1,6 @@
 # Tile lists
 
-Each file is a tile file in order to spatially restrict processing in FORCE parameter files.
+Each file is a tile file in order to spatially restrict processing in FORCE parameter files (``FILE_TILE`` parameter).
 
 - DEU - Germany
 - DE_BE - Berlin / Berlin

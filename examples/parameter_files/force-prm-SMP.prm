@@ -4,10 +4,10 @@
 # ------------------------------------------------------------------------
 # Lower Level datapool (parent directory of tiled input data)
 # Type: full directory path
-DIR_LOWER = /data/.../
+DIR_LOWER = /home/eouser/community_FORCE/test
 # Higher Level datapool (parent directory of tiled output data)
 # Type: full directory path
-DIR_HIGHER = /data/.../user/.../
+DIR_HIGHER = /home/eouser/community_FORCE/test
 
 # MASKING
 # ------------------------------------------------------------------------
@@ -45,9 +45,9 @@ OUTPUT_EXPLODE = FALSE
 # output. Each team can have multiple sub-threads to speed up the work. The
 # number of threads to use for each team is given by following parameters.
 # Type: Integer. Valid range: [1,...
-NTHREAD_READ = 8
-NTHREAD_COMPUTE = 22
-NTHREAD_WRITE = 4
+NTHREAD_READ = 2
+NTHREAD_COMPUTE = 12
+NTHREAD_WRITE = 2
 
 # PROCESSING EXTENT AND RESOLUTION
 # ------------------------------------------------------------------------
@@ -110,18 +110,18 @@ FEATURE_EXCLUDE = FALSE
 # File with coordinates, at which the features should be sampled.
 # 1st column: x-coordinate, 2nd column: y-coordinate, 3rd column: response
 # Type: full file path
-FILE_POINTS = DIR_HIGHER = /data/.../user/.../points.txt
+FILE_POINTS = /home/eouser/community_FORCE/examples/ml_training_and_model/points.txt
 # File with sampled features. This file should not exist.
 # Type: full file path
-FILE_SAMPLE = /data/.../user/.../sample.txt
+FILE_SAMPLE = /home/eouser/community_FORCE/test/sample.txt
 # File with the response variable corresponding to the sampled features.
 # This file should not exist.
 # Type: full file path
-FILE_RESPONSE = /data/.../user/.../response.txt
+FILE_RESPONSE = /home/eouser/community_FORCE/test/response.txt
 # File with the coordinates corresponding to the sampled features.
 # This file should not exist.
 # Type: full file path
-FILE_COORDINATES = /data/.../user/.../coordinates.txt
+FILE_COORDINATES = /home/eouser/community_FORCE/test/coordinates.txt
 # Are the coordinates in FILE_POINTS in the projection of the datacube
 # (X/Y: TRUE)? Or are they geographic coordinates (Lon/Lat: FALSE)
 # Type: Logical. Valid values: {TRUE,FALSE}

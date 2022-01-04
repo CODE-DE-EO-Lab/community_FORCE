@@ -8,22 +8,22 @@
 # for each sample. Do not include a header. The samples need to match the
 # response file.
 # Type: full file path
-FILE_FEATURES = /data/.../user/.../sample.txt
+FILE_FEATURES = /home/eouser/community_FORCE/test/sample.txt
 # File that is holding the response for training (class labels or numeric
 # values). The file needs to be a table with one column, and samples in rows.
 # Do not include a header. The samples need to match the feature file.
 # Type: full file path
-FILE_RESPONSE = /data/.../user/.../response.txt
+FILE_RESPONSE = /home/eouser/community_FORCE/test/response.txt
 
 # OUTPUT
 # ------------------------------------------------------------------------
 # File for storing the Machine Learning model in xml format. This file
 # will be overwritten if it exists.
 # Type: full file path
-FILE_MODEL = /data/.../user/.../model.xml
+FILE_MODEL = /home/eouser/community_FORCE/test/model.xml
 # File for storing the logfile. This file will be overwritten if it exists.
 # Type: full file path
-FILE_LOG = /data/.../user/.../log.txt
+FILE_LOG = /home/eouser/community_FORCE/test/log.txt
 
 # TRAINING
 # ------------------------------------------------------------------------

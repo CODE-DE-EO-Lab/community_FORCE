@@ -4,10 +4,10 @@
 # ------------------------------------------------------------------------
 # Lower Level datapool (parent directory of tiled input data)
 # Type: full directory path
-DIR_LOWER = /data/.../
+DIR_LOWER = /force
 # Higher Level datapool (parent directory of tiled output data)
 # Type: full directory path
-DIR_HIGHER = /data/.../user/.../
+DIR_HIGHER = /home/eouser/community_FORCE/test
 
 # MASKING
 # ------------------------------------------------------------------------
@@ -45,9 +45,9 @@ OUTPUT_EXPLODE = FALSE
 # output. Each team can have multiple sub-threads to speed up the work. The
 # number of threads to use for each team is given by following parameters.
 # Type: Integer. Valid range: [1,...
-NTHREAD_READ = 8
-NTHREAD_COMPUTE = 22
-NTHREAD_WRITE = 4
+NTHREAD_READ = 2
+NTHREAD_COMPUTE = 12
+NTHREAD_WRITE = 2
 
 # PROCESSING EXTENT AND RESOLUTION
 # ------------------------------------------------------------------------

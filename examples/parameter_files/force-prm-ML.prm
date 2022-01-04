@@ -4,10 +4,10 @@
 # ------------------------------------------------------------------------
 # Lower Level datapool (parent directory of tiled input data)
 # Type: full directory path
-DIR_LOWER = /data/.../user/TSA/
+DIR_LOWER = /home/eouser/community_FORCE/test
 # Higher Level datapool (parent directory of tiled output data)
 # Type: full directory path
-DIR_HIGHER = /data/.../user/PRED/
+DIR_HIGHER = /home/eouser/community_FORCE/test
 
 # MASKING
 # ------------------------------------------------------------------------
@@ -45,9 +45,9 @@ OUTPUT_EXPLODE = FALSE
 # output. Each team can have multiple sub-threads to speed up the work. The
 # number of threads to use for each team is given by following parameters.
 # Type: Integer. Valid range: [1,...
-NTHREAD_READ = 8
-NTHREAD_COMPUTE = 22
-NTHREAD_WRITE = 4
+NTHREAD_READ = 2
+NTHREAD_COMPUTE = 12
+NTHREAD_WRITE = 2
 
 # PROCESSING EXTENT AND RESOLUTION
 # ------------------------------------------------------------------------
@@ -110,7 +110,7 @@ FEATURE_EXCLUDE = FALSE
 # Directory containing the machine learning model(s). Models can be trained
 # with force-train
 # Type: full directory path
-DIR_MODEL = /path/to/model/
+DIR_MODEL = /home/eouser/community_FORCE/test
 # This parameter specifies the modelset used for prediction. The basename
 # of the machine learning model(s) (.xml) must be given. One or multiple
 # models can be given. The predictions of the models are aggregated into
@@ -120,7 +120,7 @@ DIR_MODEL = /path/to/model/
 # cations can be computed. Then output files will have as many bands as
 # modelsets are given.
 # Type: Basename of file, character list
-FILE_MODEL = model1.xml
+FILE_MODEL = model.xml
 # Machine learning method. Currently implemented are Random Forest and
 # Support Vector Machines, both in regression and classification flavors.
 # The method must match the models as given with FILE_MODEL.
@@ -142,7 +142,7 @@ ML_CONVERGENCE = 0
 # 16bit signed integer. This parameter should be set in dependence on the
 # scale used for training the model.
 # Type: Float. Valid range: ]0,...
-ML_SCALE = 10000
+ML_SCALE = 1
 # This parameter defines the basename for the output files. The basename will
 # be appended by Module ID, product ID, and the file extension.
 # Type: Character.

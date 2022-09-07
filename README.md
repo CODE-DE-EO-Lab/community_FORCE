@@ -1,6 +1,6 @@
 # FORCE community
 
-This repository collects useful data and examples to run [FORCE](https://github.com/davidfrantz/force) on [CODE-DE](https://code-de.org/), and to analyze the [analysis ready FORCE datacube on CODE-DE](**link to portfolio**).
+This repository collects useful data and examples to run [FORCE](https://github.com/davidfrantz/force) on [CODE-DE](https://code-de.org/) and [EOLab](https://eo-lab.org/de/), and to work with the [analysis ready FORCE datacube on CODE-DE](**link to portfolio**).
 
 
 ## FAQ

@@ -4,7 +4,7 @@
 
 1) start a Virtual Machine
 
-2) mount the dataset
+2) [mount the dataset](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/FAQ/mount.md)
 
 ## How to analyze the data with FORCE
 

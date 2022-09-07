@@ -30,4 +30,4 @@ dforce force-higher-level tsa.prm
 > Tutorials that demonstrate the usage of the Higher Level Processing System of FORCE are available [here](https://force-eo.readthedocs.io/en/latest/howto/index.html).
 
 > Knowledge-based articles that (1) describe the [FORCE data cube collection 1](link to portfolio) in depth, and (2) demonstrate the usage of FORCE on the CODE-DE platform were prepared and will be soon available on CODE-DE/EOLab websites.
-> These are accompanied by examples [paremeter files](https://github.com/CODE-DE-Cloud/community_FORCE).
+> These are accompanied by examples [parameter files](https://github.com/CODE-DE-Cloud/community_FORCE).

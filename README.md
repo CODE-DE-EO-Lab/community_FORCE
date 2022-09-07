@@ -14,4 +14,4 @@ This repository collects useful data and examples to run [FORCE](https://github.
 
 - Vector geometries for the [datacube grid system](https://github.com/CODE-DE-Cloud/community_FORCE/tree/main/grid/datacube-grid_DEU.gpkg)
 - Tile whitelists to constrain analysis to a specific federal state.
-- Example parametefiles, and data to get you started (along with Knowledge-Based-Articles - links will follow)
+- Example parameterfiles, and data to get you started (along with Knowledge-Based-Articles - links will follow)

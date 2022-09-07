@@ -7,7 +7,7 @@ FORCE can be [compiled and installed](https://force-eo.readthedocs.io/en/latest/
 The recommended way, however, is to simply use FORCE with Docker.
 It is best to use a Linux VM.
 
-1) [Install Docker](https://code-de.org/de/help/topic/faq/X5gxAxEAAB0ArF0T) in your virtual machine
+1) [Install Docker]([https://code-de.org/de/help/topic/faq/X5gxAxEAAB0ArF0T](https://code-de.org/de/help/?topic=faq&id=67471868-wie-kann-man-docker-in-einer-linuxvm-installieren) in your virtual machine
 
 2) download a Docker image using one of the following commands:
 

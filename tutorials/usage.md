@@ -1,125 +1,208 @@
 # **How to use the FORCE Data Cube Collection 1**
 
-This tutorial describes processing abilities of the Framework for Operational Radiometric Correction for Environmental monitoring (FORCE), a processing engine for medium-resolution Earth Observation image archives.
-FORCE is available to CODE-DE users and can directly be used to process Analysis Ready Data (ARD) provided by the FORCE DataCube.
-In a first step, the principles of data processing with FORCE are introduced (sections 2 and 3), followed by an overview over the FORCE higher-level component that offers numerous data processing options based on the FORCE DataCube (section 4) - including ready-to-use examples.
+This tutorial describes processing abilities of [&rarr; FORCE *(Framework for Operational Radiometric Correction for Environmental monitoring)*](DEADLINK), a processing engine for medium-resolution Earth Observation image archives.
+
+FORCE is available to CODE-DE / EOLab users and can directly be used to process Analysis Ready Data *(ARD)* provided by the FORCE Data Cube (see [&rarr; this tutorial](DEADLINK) for more details about the data cube).
+
+In this tutorial, the principles of data processing with FORCE are introduced *(sections 2 and 3)*, followed by an overview over the FORCE higher-level component that offers numerous data processing options based on the FORCE Data Cube *(section 4)* - including ready-to-use examples.
+
 
 # 1. Usage policy and installation
 
-FORCE is an open-source processing framework developed by few volunteers in a scientific context, which means it can only thrive with public endorsement.
-Before usage, please consider recommendations for citation and acknowledgement, and licensing information.
+> FORCE is a completely free and open-source [*(&rarr; GPL-3.0)*](https://force-eo.readthedocs.io/en/latest/policy/license.html#gnu-general-public-license) processing framework developed by few volunteers in a scientific context. As such, it can only thrive with public endorsement and through fair usage.
+Please consider recommendations for citation and acknowledgement.
 
-CODE-DE users can use FORCE through Docker.
-Find an installation walkthrough here.
+The recommended way for using FORCE on CODE-DE and EOLab is through Docker
+ [&rarr; walkthrough](DEADLINK).
 
-For further information, please refer to the FORCE documentation.
+For further information, please refer to the [&rarr; FORCE documentation](DEADLINK).
 
 
 # 2. FORCE processing: Overview
 
 FORCE is an all-in-one processing engine for medium-resolution Earth Observation image archives.
-It is organized in a modular way, covering complete typical Earth Observation Analysis workflows from data download to generating ARD and high-level processing.
+It is organized in a modular way, completely covering typical Earth Observation Analysis workflows - from data download to generating ARD and high-level processing.
+
 FORCE modules are categorized as follows:
-Lower-Level Components
+___
+
+#### 1) Lower-Level Components
+
 FORCE lower-level components encompass data organization and pre-processing algorithms.
-This includes, for example, data download, or data pooling as well as the generation of ARD, that means radiometric correction, cloud and cloud shadow detection, harmonization, or data cube generation.
-CODE-DE users can skip this step, and directly access Sentinel-2 and Landsat ARD for complete Germany from 1984 to today via the FORCE DataCube.
-Please refer to this tutorial for further information about data pre-processing in the FORCE DataCube, and to the FORCE documentation for further information about lower-level functionality.
-Higher-Level Components
+This includes, for example, data download, or data pooling as well as the generation of ARD, that includes radiometric correction, cloud and cloud shadow detection, harmonization, and data cube generation.
+
+CODE-DE / EOLab users can skip this step, and directly access Sentinel-2 and Landsat ARD for complete Germany from 1984 to today via the FORCE Data Cube.
+
+Please refer to [&rarr; this tutorial](DEADLINK) for further information about data pre-processing in the FORCE Data Cube, and to the FORCE [&rarr; documentation](https://force-eo.readthedocs.io/en/latest/index.html) for further information about lower-level functionality.
+
+___
+
+#### 2) Higher-Level Components
+
 FORCE higher-level components provide algorithms for data processing.
-Those can be fed with ARD or feature datasets (see section 4) in order to create highly Analysis Ready Data (hARD) and highly Analysis Ready Data plus (hARD+) respectively (see Frantz 2019).
-While hARD describes easy-to-use spatial or temporal data aggregations such as best available pixel composites, spectral-temporal metrics, or texture metrics based on ARD, hARD+ describes meaningful and ready-to-analyze data from, for example, trend analysis, or machine learning classification and regression methods.
+
+Those can be fed with *ARD* or *feature* datasets in order to create *highly Analysis Ready Data (hARD)* and *highly Analysis Ready Data plus (hARD+)*, respectively ([&rarr; Frantz 2019](https://www.mdpi.com/2072-4292/11/9/1124)).
+While hARD describes easy-to-use spatial or temporal data aggregations such as best available pixel composites, spectral-temporal metrics, or texture metrics based on ARD, hARD+ describes meaningful and application-ready data from, for example, trend analysis, or machine learning classification and regression methods.
+
 FORCE higher-level components are at the core of this article.
-Please refer to section 4 for a detailed description of FORCE higher-level functionalities.
-Auxiliary Components
-FORCE provides a range of auxiliary functions that support easy data handling.
-That includes, for example, translating external data into a specific ARD data cube format, image chip mosaicking for easier visualization, or inflating FORCE’s QAI quality bits (see this article about FORCE data quality information).
+Please refer to *section 4* for a detailed description of FORCE higher-level functionalities.
+
+___
+
+#### 3) Auxiliary Components
+
+FORCE provides a range of auxiliary functions that support data handling.
+That includes, for example, translating external data into a specific ARD data cube format, or mosaicking image chips mosaicking for easier visualization.
+
 
 # 3. FORCE processing: Getting started
 
-Once properly set up with Docker, CODE-DE users can make use of the full functionality of FORCE, including all submodules.
+Once properly set up with [&rarr; Docker](DEADLINK), CODE-DE / EOLab users can make use of the full functionality of FORCE, including all submodules.
+
 Users can execute
+
+```
 dforce
-without any extension in order to obtain information about your current FORCE version as well as usage recommendations and all currently available FORCE modules.
-Hello user! You are currently running FORCE v.
-3.7.4
-…
-All higher-level functionalities are subsumed under the higher-level component.
-Type
-         dforce force-higher-level
+```
+
+to obtain information about your current FORCE version as well as usage recommendations and all currently available FORCE modules.
+
+```
+$ Hello user! You are currently running FORCE v. 3.7.8
+$ ... [output truncated]
+```
+
+
+All higher-level functionalities are subsumed under the higher-level component. Type
+
+```
+dforce force-higher-level
+```
+
 to see the requirements to execute this component.
-dforce force-higher-level [-h] [-v] [-i] parameter-file
-Each FORCE component can be run with the -h parameter to show help, with the -v parameter to show the component’s version, and with the -i parameter to show the program’s purpose.
-For data processing, force-higher-level requires a parameter-file that will determine which submodule to execute, for example time series analysis or machine learning predictions.
+
+```
+$ Usage: force-higher-level [-h] [-v] [-i] parameter-file
+$
+$  -h  = show this help
+$  -v  = show version
+$  -i  = show program's purpose
+$
+$  Positional arguments:
+$  - 'parameter-file': parameter file for any higher level submodule
+```
+
+Each FORCE component can be run with the ``-h`` parameter to show help, with the ``-v`` parameter to show the component’s version, and with the ``-i`` parameter to show the program’s purpose.
+
+For data processing, force-higher-level requires a *parameter-file* that will determine which submodule to execute, for example time series analysis or machine learning predictions.
+
 
 # 4. Higher-Level Processing
 
 ## 4.1. Input Data
 
-FORCE higher-level processing can be run with ARD or feature datasets, depending on the submodule.
-ARD is used to generate hARD, i.e.
-spatial or temporal data aggregations, such as spectral-temporal metrics.
+FORCE higher-level processing can be run with *ARD* or *feature* datasets, depending on the submodule.
+
+___
+
+#### 1) ARD
+
+ARD is used to generate hARD, i.e. spatial or temporal data aggregations, such as spectral-temporal metrics.
 In this case, ARD need to follow a strict data format, including number of bands, naming convention with time stamp, and sensor information.
-CODE-DE users can directly use ARD from the FORCE DataCube to generate hARD..
-FORCE higher-level can also be used with feature datasets.
+CODE-DE / EOLab users can directly use ARD from the FORCE Data Cube to generate hARD.
+
+___
+
+#### 2) features
+
+FORCE higher-level processing can also be used with feature datasets.
 Feature datasets can be previously generated hARD, or external datasets such as precipitation or digital elevation models.
-Please note that FORCE higher-level components can only handle 16-bit signed input data (i.e.
--32768 to 32767), which might require previous rescaling of external data.
-External data must also be provided in the form of a data cube which can be generated using the auxiliary component force-cube.
+Please note that FORCE higher-level components can only handle 16-bit signed input data *(i.e. -32768 to 32767)*, which might require previous rescaling of external data. 
+External data must also be provided in the form of a data cube which can be generated using the auxiliary component ``force-cube``.
 Feature datasets are, for example, used in machine learning processing.
 
 ## 4.2. Compute Model
 
-The FORCE compute model is closely linked to the organization of data in the data cube (see this article about the FORCE DataCube structure).
-FORCE uses a sequential and parallel processing logic at the same time.
-The image chips organized in tiles have an internal block structure for partial image access.
-In the example in Figure 1, each image chip has been divided into four blocks that represent the main processing units (PU) [in the FORCE DataCube, it is 10 PUs].
-Block size (and consequently the number of PUs) can be overruled  the BLOCK_SIZE key in the parameter file to accommodate situations where available RAM might become an issue.
-The PUs are processed sequentially, i.e.
-one after another.
+The FORCE compute model is closely linked to the organization of data in the data cube (see [&rarr; this article](DEADLINK) about the FORCE Data Cube structure). FORCE uses a mixture of sequential and parallel processing logic at the same time.
 
-Figure 1 FORCE compute model: Processing Units (PU) and sequential processing of block structure
-FORCE uses a streaming strategy, where data input (i.e.
-reading), computing (i.e.
-processing), and output (i.e.
-writing) are done simultaneously.
-For example, while PU 16 is being read from the data cube, PU 17 will already be processed, and results from PU 15 are written to disk.
-This is enabled by a parallelization strategy, that is also able to distribute reading different image chips, computing different pixels, and writing different products at the same time (nested parallelism).
-The number of threads to be used for parallel input / computation / output can be separately chosen in the parameter file.
+___
+
+#### 1) Sequential processing
+
+The image chips organized in tiles have an internal block structure for partial image access.
+In the example in *Figure 1*, each image chip has been divided into four blocks that represent the main processing units (*PU* - in the FORCE Data Cube, it is 10 PUs).
+Block size (and consequently the number of PUs) can be overruled with the ``BLOCK_SIZE`` key in the parameter file to accommodate situations where available RAM might become an issue. 
+In principle, the PUs are processed sequentially, i.e. one after another.
+
+IMAGE
+
+*Figure 1 FORCE compute model: Processing Units (PU) and sequential processing of block structure*
+
+___
+
+#### 2) Parallel processing
+
+On top of that, FORCE uses a streaming strategy, where data input (i.e. reading), computing (i.e. processing), and output (i.e. writing) are done simultaneously.
+For example, while PU 16 is being read from the data cube, PU 17 will already be processed, and results from PU 15 are written to disk (this is similar to the grey and red bars on YouTube).
+This is complemented by a parallelization strategy, that is also able to distribute reading different images, computing different pixels, and writing different products at the same time *(nested parallelism)*.
+The number of threads to be used for parallel input / computation / output can be separately chosen in the parameter file. See [&rarr; here for more details](https://force-eo.readthedocs.io/en/latest/components/higher-level/hl-compute.html).
+
+Once running, the program will output a progress bar that allows the user to identify whether their job is input-, compute-, or output-bound, and hence can redistribute ressources accordingly.
+
 
 ## 4.3. Auxiliary Data
 
 The FORCE higher-level component supports the optional use of two auxiliary datasets.
-Tile allow-list
-Tile allow-lists are an optional input and can be used to limit the analysis to specific tiles.
-They are particularly useful, as processing time can be reduced when the area of interest has a non-square extent.
-Generally, the processing extent is provided by the X_TILE_RANGE and Y_TILE_RANGE keys in the respective parameter file.
-Minimum and maximum tile identifiers are provided based on the tiling grid (refer to this article for further detail about the FORCE DataCube tiling grid or download the vector dataset here).
-Assuming the region of interest for our analysis is the Federal state of Berlin (Figure 2), we require processing of all tiles marked with an X (5 tiles).
-Without a tile allow-list, all tiles marked with an O (1 tile) that are part of the squared extent (bold box) would undergo the same processing.
 
-Figure 2 Tiles of interest (green, X) and other tiles (red, O) part of the squared extent of the area of interest (bold).
-Example of Berlin, Germany.
-A tile allow-list can be defined in the parameter file for higher level processing using the FILE_TILE key.
+#### 1) Tile allow-list
+
+Tile allow-lists are an optional input and can be used to limit the analysis to specific *tiles*.
+
+They are particularly useful, as processing time can be reduced when the area of interest has a non-square extent.
+
+Generally, the processing extent is provided by the ``X_TILE_RANGE`` and ``Y_TILE_RANGE`` keys in the parameter files. 
+Minimum and maximum tile identifiers are provided based on the tiling grid (refer to [&rarr; this article](DEADLINK) for further details about the FORCE Data Cube tiling grid or just conveniently download [&rarr; this vector dataset](DEADLINK)).
+
+Assuming the region of interest for our analysis is the Federal state of Berlin *(Figure 2)*, we require processing of all tiles marked with an ``X`` (5 tiles).
+Without a tile allow-list, all tiles marked with an ``O`` (1 tile) that are part of the squared extent *(bold box)* would undergo the same processing (in other words: wasted computing time). Using a tile allow-list in our example reduces processing time by *17%*.
+
+
+IMAGE
+
+*Figure 2: Tiles of interest (green, X) and other tiles (red, O) part of the squared extent of the area of interest (bold).
+Example of Berlin, Germany.*
+
+A tile allow-list can be defined in the parameter file for higher level processing using the ``FILE_TILE`` key.
+
 A tile allow-list is a text file that must be prepared as follows: the 1st line must give the number of tiles for which output should be created.
 The corresponding tile IDs must be given in the following lines, one ID per line.
 End with an empty line.
+
 The example of Berlin looks like this:
+
+```
 5
 X0069_Y0042
 X0069_Y0043
 X0070_Y0042
 X0070_Y0043
 X0070_Y0044
-The full tile allow-list for Berlin and other states can be downloaded here.
-Using a tile allow-list in our example reduces processing time by 17%.
-Processing masks
-Processing masks can be used to restrict processing and analysis to certain pixels of interest, which, again, reduces processing time (e.g.
-if you are only interested in the forested area).
-The masks need to be in data cube format, i.e.
-they need to be raster images in the same grid as all the other data.
-The masks should be binary images, and pixels that have a mask value of 0 will be skipped.
-Masks can be generated from raster data or vector data using force-cube or force-procmask.
+```
+
+The ready-to-go tile allow-list for Berlin and all other states can be [&rarr; downloaded here](DEADLINK).
+
+___
+
+#### 2) Processing masks
+
+Processing masks can be used to restrict processing and analysis to certain *pixels* of interest, which, again, reduces processing time (e.g. if you are only interested in the forested area).
+
+The masks need to be in data cube format, i.e. they need to be raster images in the same grid as all the other data.
+
+The masks should be binary images, and pixels that have a mask value of ``0`` will be skipped.
+Masks can be generated from raster data or vector data using ``force-cube`` or ``force-procmask``.
+
+For details, please refer to our [&rarr; processing masks tutorial](https://force-eo.readthedocs.io/en/latest/howto/masks.html).
 
 ## 4.4. Parameter file
 
@@ -190,7 +273,7 @@ That means that this submodule generates spatially consistent large-area data wi
 
 #### Input Data
 
-This submodule requires ARD as available in the FORCE DataCube as input for static target dates.
+This submodule requires ARD as available in the FORCE Data Cube as input for static target dates.
 Computing dynamic target dates based on surface phenology requires feature input from a Land Surface Phenology (LSP) dataset, which can be generated using the Time Series Analysis submodule.
 
 #### Parameter file
@@ -207,7 +290,7 @@ For an encompassing description of parameterization, please see the FORCE docume
 
 #### Output Data
 
-Output data are organized in the FORCE DataCube format.
+Output data are organized in the FORCE Data Cube format.
 Example filename: 20160701_LEVEL3_LNDLG_BAP.tif
 Each file name indicates the target date (here: 20160701), the sensor ID of the selected sensor family (e.g.
 Landsat legacy bands: LNDLG), and the product type (e.g.
@@ -244,7 +327,7 @@ That encompasses, for example, the number of observations, or the average number
 
 #### Input Data
 
-This submodule requires ARD as available in the FORCE DataCube as input, as it assesses data availability of ARD.
+This submodule requires ARD as available in the FORCE Data Cube as input, as it assesses data availability of ARD.
 
 #### Parameter file
 
@@ -257,7 +340,7 @@ For an encompassing description of parameterization, please see the FORCE docume
 
 #### Output Data
 
-Output data are organized in the FORCE DataCube format.
+Output data are organized in the FORCE Data Cube format.
 Example filename: 2000-2010_001-365-03_HL_CSO_LNDLG_NUM.tif
 The output represents the clear sky observation statistics selected by the user in the parameter file.
 Each file name indicates the selected period (year and day-of-year: 2000-2010_001-365), the selected sensor ID (e.g.
@@ -283,7 +366,7 @@ The submodule can, for example, generate Land Surface Phenology metrics, time se
 
 #### Input Data
 
-This submodule requires ARD as available in the FORCE DataCube as input, as it generates time series metrics from ARD.
+This submodule requires ARD as available in the FORCE Data Cube as input, as it generates time series metrics from ARD.
 
 #### Parameter file
 
@@ -328,7 +411,7 @@ It is important to understand the effect of each parameter in order to limit pro
 
 #### Output Data
 
-Output data are organized in the FORCE DataCube format.
+Output data are organized in the FORCE Data Cube format.
 Example filename: 1984-2020_182-274_HL_TSA_LNDLG_TCG_STM.tif
 As the Time Series Analysis submodule provides a huge variety of possible outputs, output naming conventions are similarly complex.
 In this example, Tasseled Cap Greenness (TCG) metrics for all clear-sky observations between 1984 and 2020, and between day of year 182 and 274, have been computed for Landsat Legacy Bands (LNDLG).
@@ -433,7 +516,7 @@ For an encompassing description of parameterization, please see the FORCE docume
 
 #### Output Data
 
-Output data are organized in the FORCE DataCube format.
+Output data are organized in the FORCE Data Cube format.
 Example filename: XXX_HL_ML_MLP.tif
 The output of the Machine Learning submodule is highly individual, depending on what response variable was chosen by the user.
 This is why users can also choose a naming base (here represented by XXX), followed by an indicator for higher level products (HL), the machine learning submodule tag (ML), and a specific output type (here: MLP).
@@ -478,7 +561,7 @@ This way, spatially contextual information can be made use of, for example three
 
 This submodule typically uses hARD products, i.e.
 seamless and gap free aggregate products.
-However, texture metrics can similarly be computed on ARD as available in the FORCE DataCube, if single scenes are of interest.
+However, texture metrics can similarly be computed on ARD as available in the FORCE Data Cube, if single scenes are of interest.
 Texture metrics can, of course, also be calculated on external (cubed) datasets if the user’s workflow requires this.
 Parameter file
 Create a Texture Metrics parameter file with
@@ -487,20 +570,20 @@ The Texture Metrics parameter file uses an INPUT_FEATURE parameter that points a
 TXT_RADIUS = 50
 TXT_ITERATION = 1
 TXT = DIL ERO BHT
-describe the radius to be applied for texture computation (meters for FORCE DataCube), the number of iterations (i.e.
+describe the radius to be applied for texture computation (meters for FORCE Data Cube), the number of iterations (i.e.
 3 means the texture is iteratively calculated three times, which increases texture effect), and the kind of texture.
 Currently available metrics are dilation, erosion, opening, closing, gradient, blackhat and tophat.
 For an encompassing description of parameterization, please see the FORCE documentation.
 
 #### Output Data
 
-Output data are organized in the FORCE DataCube format.
+Output data are organized in the FORCE Data Cube format.
 Example filename: TEXTURE_HL_TXT_CLS.tif
 The output of the Texture Metrics submodule is rather standardized, as the user can only choose between different morphological metrics to be applied.
 TEXTURE is the name base that can be adapted by the user in the parameter file.
 Here, CLS is the closing operator tag.
 The data is represented in the same type as the input data, e.g.
-reflectance with a scale of 10000 if ARD from the FORCE DataCube is used.
+reflectance with a scale of 10000 if ARD from the FORCE Data Cube is used.
 
 #### Working Example
 
@@ -531,7 +614,7 @@ The submodule accepts cubed raster data with a discrete or continuous data struc
 Create a Landscape Metrics parameter file with
 dforce force-parameter parameter-file LSM
 The Landscape Metrics parameter file uses an INPUT_FEATURE parameter that points at all features that Landscape Metrics should be computed for (file name followed by an enumeration of bands).
-LSM_RADIUS describe the radius to be applied for landscape metrics computation in data cube projection units (meters for FORCE DataCube).
+LSM_RADIUS describe the radius to be applied for landscape metrics computation in data cube projection units (meters for FORCE Data Cube).
 LSM_KERNEL_SHAPE indicates whether a circular or squared kernel should be used as a moving window.
 LSM_MIN_PATCHSIZE describes the minimum number of pixels of a patch in order to be considered a patch (i.e.
 1 means no minimum).
@@ -549,7 +632,7 @@ For an encompassing description of parameterization, please see the FORCE docume
 
 #### Output Data
 
-Output data are organized in the FORCE DataCube format.
+Output data are organized in the FORCE Data Cube format.
 Example filename: LSMBASE_HL_LSM_MPA.tif
 The output of the Landscape Metrics submodule is rather standardized, as the user can only choose between different metrics to be applied.
 LSM is the name base that can be adapted by the user in the parameter file.
@@ -571,7 +654,7 @@ Please refer to the FORCE Landscape Metrics documentation for further detail.
 
 ### User Defined Functions
 
-The User Defined Functions submodule provides an interface that allows FORCE users to benefit from FORCE processing capabilities and datacube structures with user-written Python functions.
+The User Defined Functions submodule provides an interface that allows FORCE users to benefit from FORCE processing capabilities and Data Cube structures with user-written Python functions.
 These UDFs only contain the algorithm itself, while data handling is completely organized by FORCE.
 Users can plug in simple scripts, complicated algorithms, or existing Python implementations of commonly used packages, such as BFAST, or LandTrendr.
 

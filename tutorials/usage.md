@@ -249,7 +249,7 @@ RESOLUTION = 10
 Where XXX is the respective submodule.
 For further information about those keys, please refer to previous sections or the description provided by the parameter file itself (use without -c), or refer to the in-depth documentation.
 
-## 4.5. Submodules
+# 5. Higher-Level Submodules
 
 FORCE higher-level consists of ten submodules, all executable with
 dforce force-higher-level parameter-file
@@ -261,7 +261,7 @@ cd /home/eouser
  mkdir test
  cd examples/parameter_files
 
-### Level 3 Compositing
+## Level 3 Compositing
 
 The Level 3 Compositing submodule generates temporal aggregations of Analysis Ready Data (ARD) to provide seamless, gap free, and highly Analysis Ready Data (hARD) over very large areas.
 hARD are excellent inputs for many machine learning algorithms, e.g.
@@ -319,7 +319,7 @@ Please refer to the FORCE Level 3 Compositing documentation with a processing wo
 ___
 
 
-### Clear Sky Observations
+## Clear Sky Observations
 
 The Clear Sky Observations submodule assists in data availability mining.
 It assesses availability metrics of all clear-sky observations of a specified set of sensors within a specified period.
@@ -358,7 +358,7 @@ This generates a monthly overview of all clear sky observations of all available
 Please refer to the FORCE Clear Sky Observations documentation with a processing workflow illustration for further detail.
 ___
 
-### Time Series Analysis
+## Time Series Analysis
 
 The Time Series Analysis submodule provides out-of-the-box time series preparation and analysis functionality.
 The Time Series Analysis submodule provides a very large variety of different data output types, including hARD and hARD+ datasets that can be used as an input to the Machine Learning submodule or directly analysed.
@@ -434,7 +434,7 @@ Please refer to the FORCE Time Series Analysis documentation with a processing w
 
 ___
 
-### Sampling
+## Sampling
 
 The Sampling submodule provides a point-based extraction routine of features for training and validation purposes.
 
@@ -468,7 +468,7 @@ Please refer to the FORCE Sampling documentation for further detail.
 ___
 
 
-### Machine Learning
+## Machine Learning
 
 The Machine Learning submodule generates maps from machine learning predictions.
 This submodule can generate quantitative or qualitative predictions, i.e.
@@ -551,7 +551,7 @@ Please refer to the FORCE Machine Learning documentation with a processing workf
 
 ___
 
-### Texture Metrics
+## Texture Metrics
 
 The Texture Metrics submodule generates spatially aggregated data (hARD) using morphological image analysis.
 Texture metrics are computed considering not only a single pixel value, but also values of all surrounding pixels within a specified radius, using a variety of morphological operators.
@@ -597,7 +597,7 @@ Please refer to the FORCE Texture Metrics documentation with a processing workfl
 
 ___
 
-### Landscape Metrics
+## Landscape Metrics
 
 The Landscape Metrics submodule quantifies spatial patterns of a given feature.
 This submodule uses a continuous moving window approach and computes a set of landscape metrics for each pixel and its surrounding area within a specified radius, for example edge density, the number of patches, or mean patch area.
@@ -652,9 +652,9 @@ This generates the Mean Patch Area of all vegetation patches, defined by pixels 
 
 Please refer to the FORCE Landscape Metrics documentation for further detail.
 
-### User Defined Functions
+## User Defined Functions
 
-The User Defined Functions submodule provides an interface that allows FORCE users to benefit from FORCE processing capabilities and Data Cube structures with user-written Python functions.
+The User Defined Functions submodule provides an interface that allows FORCE users to both benefit from FORCE processing capabilities and Data Cube structures and the flexibility of user-written Python functions.
 These UDFs only contain the algorithm itself, while data handling is completely organized by FORCE.
 Users can plug in simple scripts, complicated algorithms, or existing Python implementations of commonly used packages, such as BFAST, or LandTrendr.
 
@@ -685,7 +685,7 @@ The corresponding python script file can be downloaded here.
 
 Please refer to this FORCE User Defined Functions tutorial for further detail.
  
-### 5. Jupyter Notebook
+# 6. Jupyter Notebook
 
 FORCE can be used on CODE-DE using a Jupyter Notebook.
 A Jupyter Notebook is a web interface that allows to combine executable code with explanatory text and other elements, which is particularly suitable for, for example, tutorials.

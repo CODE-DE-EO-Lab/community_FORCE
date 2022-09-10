@@ -888,11 +888,11 @@ In general, though, we recommend to use FORCE directly on the VM's commandline, 
 
 # 7. Further Reading
 
+- [&rarr; FORCE Code and entry point](https://github.com/davidfrantz/force)
 - [&rarr; FORCE Main reference](http://doi.org/10.3390/rs11091124)
-- [&rarr; FORCE Publications](https://force-eo.readthedocs.io/en/latest/refs.html#refs)
 - [&rarr; FORCE Documentation](https://force-eo.readthedocs.io/en/latest/index.html)
 - [&rarr; FORCE Tutorials](https://force-eo.readthedocs.io/en/latest/howto/index.html)
-- [&rarr; FORCE Code](https://github.com/davidfrantz/force)
+- [&rarr; FORCE Publications](https://force-eo.readthedocs.io/en/latest/refs.html#refs)
 - [&rarr; FORCE on ResearchGate](https://www.researchgate.net/project/FORCE-Framework-for-Operational-Radiometric-Correction-for-Environmental-monitoring)
 - [&rarr; FORCE on Twitter](https://twitter.com/search?q=%23FORCE_EO&src=recent_search_click)
 

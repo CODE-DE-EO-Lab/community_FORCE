@@ -215,13 +215,32 @@ For each submodule, a skeleton file can be generated using:
 dforce force-parameter parameter-file module
 ```
 
-parameter-file indicates the output path of the file to be created.
-Module is the submodule this parameter file should be created for.
-To show available submodules.:
+*parameter-file* indicates the output path of the file to be created.
+*Module* is the module this parameter file should be created for.
+To show available modules:
 
 ```
 dforce force-parameter -m
 ```
+
+```
+$  available modules:
+$    LEVEL2:   Level 2 Processing System
+$    LEVEL3:   Level 3 Processing System
+$    TSA:      Time Series Analysis
+$    CSO:      Clear-Sky Observations
+$    UDF:      Plug-In User Defined Functions
+$    L2IMP:    Level 2 ImproPhe
+$    CFIMP:    Continuous Field ImproPhe
+$    SMP:      Sampling
+$    TRAIN:    Train Machine Learner
+$    SYNTHMIX: Synthetic Mixing
+$    ML:       Machine Learning
+$    TXT:      Texture
+$    LSM:      Landscape Metrics
+$    LIB:      Library Completeness
+```
+
 
 The following keys are *always* part of a higher-level parameter file. ``XXX`` is the respective submodule.
 
@@ -369,31 +388,46 @@ This submodule requires ARD as available in the FORCE Data Cube as input, as it 
 
 #### Parameter file
 
-Create a Clear Sky Observations parameter file with
-dforce force-parameter parameter-file CSO
-The key parameters for the Clear Sky Observation submodule are the bin width that is used to summarize CSOs (e.g.
-1 for monthly, 12 for annual), as well as the metrics to be calculated on CSOs.
+You can create a new Clear Sky Observations parameter file with:
+
+```
+dforce force-parameter my-parameter-file.prm CSO
+```
+
+or use/modify the provided example ``force-prm-CSO.prm``.
+
+
+The key parameters for the Clear Sky Observation submodule are the bin width that is used to summarize CSOs (e.g. *1* for monthly, *12* for annual), as well as the metrics to be calculated on CSOs.
+
 Multiple metrics can be computed at the same time.
-For an encompassing description of parameterization, please see the FORCE documentation.
+For an encompassing description of parameterization, please see the [&rarr; FORCE documentation](https://force-eo.readthedocs.io/en/latest/components/higher-level/cso).
 
 #### Output Data
 
 Output data are organized in the FORCE Data Cube format.
-Example filename: 2000-2010_001-365-03_HL_CSO_LNDLG_NUM.tif
+
+Example filename: ``2000-2010_001-365-03_HL_CSO_LNDLG_NUM.tif``
+
 The output represents the clear sky observation statistics selected by the user in the parameter file.
-Each file name indicates the selected period (year and day-of-year: 2000-2010_001-365), the selected sensor ID (e.g.
-Landsat legacy bands: LNDLG), and the respective statistics (Number of Observations: NUM).
-Please see the FORCE documentation for the complete naming convention.
+
+Each file name indicates the selected period (year and day-of-year: *2000-2010_001-365*), the selected sensor ID (e.g. Landsat legacy bands: *LNDLG*), and the respective statistics (e.g. number of observations: *NUM*).
+Please see the [&rarr; FORCE documentation](https://force-eo.readthedocs.io/en/latest/components/higher-level/cso/format.html) for the complete naming convention.
 
 #### Working Example
 
-CODE-DE users can download a working example of a Clear Sky Observations parameter file here, or directly use the parameter file as follows:
+
+CODE-DE / EOLab users can use the working example of a CSO parameter file provided in this repository:
+
+```
 dforce force-higher-level force-prm-CSO.prm
-This generates a monthly overview of all clear sky observations of all available Sentinel-2 A and B images for 2020 for Berlin.
+```
+
+This generates a monthly overview of all clear sky observations of all available Sentinel-2A/B images for 2020 for Berlin.
 
 #### Further Reading
 
-Please refer to the FORCE Clear Sky Observations documentation with a processing workflow illustration for further detail.
+Please refer to the [&rarr; FORCE Clear Sky Observations documentation](https://force-eo.readthedocs.io/en/latest/components/higher-level/cso) with a processing workflow illustration for further detail.
+
 ___
 
 ## Time Series Analysis

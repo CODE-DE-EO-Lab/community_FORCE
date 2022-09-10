@@ -6,6 +6,29 @@ FORCE is available to CODE-DE / EOLab users and can directly be used to process 
 
 In this tutorial, the principles of data processing with FORCE are introduced *(sections 2 and 3)*, followed by an overview over the FORCE higher-level component that offers numerous data processing options based on the FORCE Data Cube *(section 4-5)* - including ready-to-use examples.
 
+## Table of Content
+
+- [&rarr; 1. Usage policy and installation](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#1-usage-policy-and-installation)
+- [&rarr; 2. FORCE processing: Overview](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#2-force-processing:-overview)
+- [&rarr; 3. FORCE processing: Getting started](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#3-force-processing:-getting-started)
+- [&rarr; 4. Higher-Level Processing](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#4-higher-level-processing)
+    - [&rarr; 4.1. Input Data](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#41-input-data)
+    - [&rarr; 4.2. Compute Model](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#42-compute-model)
+    - [&rarr; 4.3. Auxiliary Data](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#43-auxiliary-data)
+    - [&rarr; 4.4. Parameter file](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#44-parameter-file)
+- [&rarr; 5. Higher-Level Submodules](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#5-higher-level-submodules)
+    - [&rarr; 5.1. Level 3 Compositing](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#51-level-3-compositing)
+    - [&rarr; 5.2. Clear Sky Observations](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#52-clear-sky-observations)
+    - [&rarr; 5.3. Time Series Analysis](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#53-time-series-analysis)
+    - [&rarr; 5.4. Sampling](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#54-sampling)
+    - [&rarr; 5.5. Machine Learning](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#55-machine-learning)
+    - [&rarr; 5.6. Texture Metrics](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#56-texture-metrics)
+    - [&rarr; 5.7. Landscape Metrics](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#57-landscape-metrics)
+    - [&rarr; 5.8. User Defined Functions](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#58-user-defined-functions)
+- [&rarr; 6. Jupyter Notebook](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#6-jupyter-notebook)
+- [&rarr; Further Reading](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#further-reading)
+
+
 
 # 1. Usage policy and installation
 
@@ -305,7 +328,7 @@ cd community_FORCE/examples/parameter_files
 
 ___
 
-## Level 3 Compositing
+## 5.1. Level 3 Compositing
 
 The Level 3 Compositing submodule generates temporal aggregations of Analysis Ready Data (ARD) to provide seamless, gap free, and highly Analysis Ready Data (hARD) over very large areas.
 hARD are excellent inputs for many machine learning algorithms, e.g. for land cover / change classification purposes.
@@ -376,7 +399,7 @@ Please refer to the [&rarr; FORCE Level 3 Compositing documentation](https://for
 ___
 
 
-## Clear Sky Observations
+## 5.2. Clear Sky Observations
 
 The Clear Sky Observations submodule assists in data availability mining.
 It assesses availability metrics of all clear-sky observations of a specified set of sensors within a specified period.
@@ -430,7 +453,7 @@ Please refer to the [&rarr; FORCE Clear Sky Observations documentation](https://
 
 ___
 
-## Time Series Analysis
+## 5.3. Time Series Analysis
 
 The Time Series Analysis submodule provides out-of-the-box time series preparation and analysis functionality.
 The Time Series Analysis submodule provides a very large variety of different data output types, including hARD and hARD+ datasets that can be used as an input to the Machine Learning submodule or directly analysed.
@@ -526,7 +549,7 @@ Please refer to the [&rarr; FORCE Time Series Analysis documentation](https://fo
 
 ___
 
-## Sampling
+## 5.4. Sampling
 
 The Sampling submodule provides a point-based extraction routine of features for training and validation purposes.
 
@@ -560,7 +583,7 @@ Please refer to the FORCE Sampling documentation for further detail.
 ___
 
 
-## Machine Learning
+## 5.5. Machine Learning
 
 The Machine Learning submodule generates maps from machine learning predictions.
 This submodule can generate quantitative or qualitative predictions, i.e.
@@ -643,7 +666,7 @@ Please refer to the FORCE Machine Learning documentation with a processing workf
 
 ___
 
-## Texture Metrics
+## 5.6. Texture Metrics
 
 The Texture Metrics submodule generates spatially aggregated data (hARD) using morphological image analysis.
 Texture metrics are computed considering not only a single pixel value, but also values of all surrounding pixels within a specified radius, using a variety of morphological operators.
@@ -689,7 +712,7 @@ Please refer to the FORCE Texture Metrics documentation with a processing workfl
 
 ___
 
-## Landscape Metrics
+## 5.7. Landscape Metrics
 
 The Landscape Metrics submodule quantifies spatial patterns of a given feature.
 This submodule uses a continuous moving window approach and computes a set of landscape metrics for each pixel and its surrounding area within a specified radius, for example edge density, the number of patches, or mean patch area.
@@ -744,7 +767,7 @@ This generates the Mean Patch Area of all vegetation patches, defined by pixels 
 
 Please refer to the FORCE Landscape Metrics documentation for further detail.
 
-## User Defined Functions
+## 5.8. User Defined Functions
 
 The User Defined Functions submodule provides an interface that allows FORCE users to both benefit from FORCE processing capabilities and Data Cube structures and the flexibility of user-written Python functions.
 These UDFs only contain the algorithm itself, while data handling is completely organized by FORCE.

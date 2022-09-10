@@ -4,7 +4,7 @@ This tutorial describes processing abilities of [&rarr; FORCE *(Framework for Op
 
 FORCE is available to CODE-DE / EOLab users and can directly be used to process Analysis Ready Data *(ARD)* provided by the FORCE Data Cube (see [&rarr; this tutorial](DEADLINK) for more details about the data cube).
 
-In this tutorial, the principles of data processing with FORCE are introduced *(sections 2 and 3)*, followed by an overview over the FORCE higher-level component that offers numerous data processing options based on the FORCE Data Cube *(section 4)* - including ready-to-use examples.
+In this tutorial, the principles of data processing with FORCE are introduced *(sections 2 and 3)*, followed by an overview over the FORCE higher-level component that offers numerous data processing options based on the FORCE Data Cube *(section 4-5)* - including ready-to-use examples.
 
 
 # 1. Usage policy and installation

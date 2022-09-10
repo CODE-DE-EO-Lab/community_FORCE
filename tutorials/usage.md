@@ -442,24 +442,37 @@ This submodule requires ARD as available in the FORCE Data Cube as input, as it 
 
 #### Parameter file
 
-Create a Time Series Analysis parameter file with
-dforce force-parameter parameter-file TSA
+You can create a new Time Series Analysis parameter file with:
+
+```
+dforce force-parameter my-parameter-file.prm TSA
+```
+
+or use/modify the provided example ``force-prm-TSA.prm``.
+
 The Time Series Analysis submodule parameter file is one of the more complex parameter files (but also one of the most powerful ones).
+
 Here, the user can select numerous indices and metrics to be computed.
 While this is very handy, please keep in mind that depending on parameterization you can potentially generate an absurd number of results and quickly fill up disc space.
-Fully parameterized, this submodule can output 5508 products! Each of these products are multi-band images.
-Some of these products, e.g.
-interpolated time series, can have 1000s of bands.
-Try to reduce the number of metrics (e.g.
-in INDEX = …) or outputs (e.g.
-by setting OUTPUT_XXX = FALSE if not required).
+Fully parameterized, this submodule can output 5508 products! 
+Each of these products are multi-band images.
+
+Some of these products, e.g. interpolated time series, can have 1000s of bands.
+
+Try to reduce the number of metrics (e.g. in ``INDEX = ...``) or outputs (e.g. by setting ``OUTPUT_XXX = FALSE`` if not required).
 While some parameters are rather self-explanatory, e.g.
+
+```
 # SPECTRAL TEMPORAL METRICS
 # -------------------------------------------------------------
 OUTPUT_STM = TRUE
 STM = Q25 Q50 Q75 AVG STD
- Some might require explanation.
-For example, FOLDING PARAMETERS describe the temporal organization of the time series analysis.
+```
+
+Some might require explanation.
+For example, ``FOLDING PARAMETERS`` describe the temporal organization of the time series analysis.
+
+```
 FOLD_TYPE = AVG
 STANDARDIZE_FOLD = NONE
 OUTPUT_FBY = TRUE
@@ -467,42 +480,49 @@ OUTPUT_FBQ = FALSE
 OUTPUT_FBM = TRUE
 OUTPUT_FBW = FALSE
 OUTPUT_FBD = FALSE
-OUTPUT_TRY = FALSE
+OUTPUT_TRY = TRUE
 OUTPUT_TRQ = FALSE
 OUTPUT_TRM = FALSE
-OUTPUT_TRW = FALSE
+OUTPUT_TRW = TRUE
 OUTPUT_TRD = FALSE
 OUTPUT_CAY = FALSE
 OUTPUT_CAQ = FALSE
 OUTPUT_CAM = FALSE
 OUTPUT_CAW = FALSE
 OUTPUT_CAD = FALSE
-This outputs yearly and monthly time series of the average of all indices requested in SPECTRAL INDEX as well as a trend analysis over yearly and weekly average values.
-For an encompassing description of parameterization, please see the FORCE documentation.
-It is important to understand the effect of each parameter in order to limit processing time to the necessary amount.
+```
+
+This outputs yearly and monthly time series of the average of all indices requested in ``INDEX`` as well as a trend analysis over yearly and weekly average values.
+For an encompassing description of parameterization, please see the [&rarr; FORCE documentation](https://force-eo.readthedocs.io/en/latest/components/higher-level/tsa/param.html).
+
 
 #### Output Data
 
 Output data are organized in the FORCE Data Cube format.
-Example filename: 1984-2020_182-274_HL_TSA_LNDLG_TCG_STM.tif
+
+Example filename: ``1984-2020_182-274_HL_TSA_LNDLG_TCG_STM.tif``
+
 As the Time Series Analysis submodule provides a huge variety of possible outputs, output naming conventions are similarly complex.
-In this example, Tasseled Cap Greenness (TCG) metrics for all clear-sky observations between 1984 and 2020, and between day of year 182 and 274, have been computed for Landsat Legacy Bands (LNDLG).
-After the temporal and sensor information, the file name contains information about a possibly used index (or band), and product type (e.g.
-STM for spectral-temporal metrics.
-Product type can represent time series metrics, phenological metrics, or polarmetrics.
-In the latter cases, additional tags are used to describe the output as well as possible.
+
+In this example, Tasseled Cap Greenness (*TCG*) metrics for all clear-sky observations between *1984 and 2020*, and between day of year *182 and 274*, have been computed for Landsat Legacy Bands (*LNDLG*).
+
+After the temporal and sensor information, the file name contains information about a possibly used *index* (or *band*), and product type (e.g. *STM* for spectral-temporal metrics.
 Output file names are highly dependent on the choices the user made in the corresponding parameter file.
-Please see the FORCE documentation for the complete naming convention.
+Please see the [&rarr; FORCE documentation](https://force-eo.readthedocs.io/en/latest/components/higher-level/tsa/format.html) for the complete naming convention.
 
 #### Working Example
 
-CODE-DE users can download a working example of a Time Series Analysis  parameter file here, or directly use the parameter file as follows:
+CODE-DE / EOLab users can use the working example of a Time Series Analysis parameter file provided in this repository:
+
+```
 dforce force-higher-level force-prm-TSA.prm
-This generates the median, maximum, mean, 25th and 75th percentile of the Normalized Difference Vegetation Index (NDVI), Tasseled Cap Greenness, and reflectance, from all Sentinel-2 A and B clear sky observations for 2020 for Berlin.
+```
+
+This generates the median, maximum, mean, 25th and 75th percentile of the Normalized Difference Vegetation Index (NDVI), Tasseled Cap Greenness, and reflectance, from all Sentinel-2A/B clear sky observations for 2020 for Berlin.
 
 #### Further Reading
 
-Please refer to the FORCE Time Series Analysis documentation with a processing workflow illustration.
+Please refer to the [&rarr; FORCE Time Series Analysis documentation](https://force-eo.readthedocs.io/en/latest/components/higher-level/tsa) with a processing workflow illustration.
 
 ___
 

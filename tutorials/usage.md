@@ -766,15 +766,11 @@ Please find a Jupyter notebook using FORCE on CODE-DE here.
 
 # Further Reading
 
-FORCE Documentation: https://force-eo.readthedocs.io/en/latest/index.html
-FORCE Tutorials: https://force-eo.readthedocs.io/en/latest/howto/index.html
-FORCE Publications: https://force-eo.readthedocs.io/en/latest/refs.html#refs
-Standard reference: Frantz, D.
-(2019): FORCE – Landsat + Sentinel-2 Analysis Ready Data and beyond: Remote Sensing 11, 1124.
-Doi: http://doi.org/10.3390/rs11091124
-FORCE Code: https://github.com/davidfrantz/force
-FORCE on ResearchGate: https://www.researchgate.net/project/FORCE-Framework-for-Operational-Radiometric-Correction-for-Environmental-monitoring
-How to use Analysis Ready Data in the FORCE Data Cube?
-ARD provided by the FORCE Data Cube can be further processed and analyzed by CODE-DE users using FORCE processing functionalities.
-Please use this tutorial [here: Link to Tutorial T13] as a starting point and the FORCE documentation for a more detailed description.
+- [&rarr; FORCE Main reference](http://doi.org/10.3390/rs11091124)
+- [&rarr; FORCE Publications](https://force-eo.readthedocs.io/en/latest/refs.html#refs)
+- [&rarr; FORCE Documentation](https://force-eo.readthedocs.io/en/latest/index.html)
+- [&rarr; FORCE Tutorials](https://force-eo.readthedocs.io/en/latest/howto/index.html)
+- [&rarr; FORCE Code](https://github.com/davidfrantz/force)
+- [&rarr; FORCE on ResearchGate](https://www.researchgate.net/project/FORCE-Framework-for-Operational-Radiometric-Correction-for-Environmental-monitoring)
+- [&rarr; FORCE on Twitter](https://twitter.com/search?q=%23FORCE_EO&src=recent_search_click)
 

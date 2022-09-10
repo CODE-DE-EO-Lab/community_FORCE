@@ -169,8 +169,8 @@ Without a tile allow-list, all tiles marked with an ``O`` (1 tile) that are part
 
 IMAGE
 
-*Figure 2: Tiles of interest (green, X) and other tiles (red, O) part of the squared extent of the area of interest (bold).
-Example of Berlin, Germany.*
+*Figure 2: Tiles of interest (green, X) and other tiles (red, O) part of the squared extent of the area of interest (**bold**).
+Example: Berlin, Germany.*
 
 A tile allow-list can be defined in the parameter file for higher level processing using the ``FILE_TILE`` key.
 
@@ -207,15 +207,26 @@ For details, please refer to our [&rarr; processing masks tutorial](https://forc
 ## 4.4. Parameter file
 
 FORCE’s higher-level component requires a parameter file as the sole argument.
+
 This parameter file will determine the submodule to be executed as well as all relevant input, output, and processing parameters.
-For each submodule, a skeleton file can be generated using
+For each submodule, a skeleton file can be generated using:
+
+```
 dforce force-parameter parameter-file module
+```
+
 parameter-file indicates the output path of the file to be created.
 Module is the submodule this parameter file should be created for.
-Use
+To show available submodules.:
+
+```
 dforce force-parameter -m
-to show available submodules.
-The following keys are always part of a higher-level parameter file:
+```
+
+The following keys are *always* part of a higher-level parameter file. ``XXX`` is the respective submodule.
+
+
+```
 ++PARAM_XXX_START++
  
 # INPUT/OUTPUT DIRECTORIES
@@ -241,80 +252,107 @@ NTHREAD_WRITE = 4
  
 # PROCESSING EXTENT AND RESOLUTION
 # -------------------------------------------------------------
-X_TILE_RANGE = 0 0
-Y_TILE_RANGE = 0 0
+X_TILE_RANGE = 69 70
+Y_TILE_RANGE = 42 44
 FILE_TILE = NULL
 BLOCK_SIZE = 0
 RESOLUTION = 10
-Where XXX is the respective submodule.
-For further information about those keys, please refer to previous sections or the description provided by the parameter file itself (use without -c), or refer to the in-depth documentation.
+
+# more keys (module-specific)
+
+++PARAM_XXX_END++
+```
+
+For further information about those keys, please refer to previous sections or the description provided by the parameter file itself (use ``force-parameter`` without ``-c``), or refer to the [&rarr; in-depth documentation](https://force-eo.readthedocs.io/en/latest/components/higher-level/hl-submodules.html).
+
 
 # 5. Higher-Level Submodules
 
-FORCE higher-level consists of ten submodules, all executable with
+FORCE higher-level currently consists of ten submodules, all executable with
+
+```
 dforce force-higher-level parameter-file
-This section includes working examples defined to work with a hm.2xlarge flavored VM.
-The easiest way to reproduce the examples is to clone the CODE-DE FORCE community repository in the eouser home directory:
+```
+
+This section includes working examples defined to work with a ``hm.2xlarge`` flavored VM.
+
+The easiest way to reproduce the examples is to clone this community repository in the ``eouser`` home directory:
+
+```
 cd /home/eouser
- git clone https://github.com/CODE-DE-Cloud/community_FORCE.git
- cd community_FORCE
- mkdir test
- cd examples/parameter_files
+git clone https://github.com/CODE-DE-EO-Lab/community_FORCE.git
+cd community_FORCE/examples/parameter_files
+```
+
+___
 
 ## Level 3 Compositing
 
 The Level 3 Compositing submodule generates temporal aggregations of Analysis Ready Data (ARD) to provide seamless, gap free, and highly Analysis Ready Data (hARD) over very large areas.
-hARD are excellent inputs for many machine learning algorithms, e.g.
-for land cover / change classification purposes.
-The aggregation is performed using a parametric weighting scheme-based selection algorithm commonly known as best available pixel (BAP) compositing, using static target dates (Griffiths et al.
-2013), or dynamic target dates (Frantz et al.
-2017).
+hARD are excellent inputs for many machine learning algorithms, e.g. for land cover / change classification purposes.
+The aggregation is performed using a parametric weighting scheme-based selection algorithm commonly known as best available pixel *(BAP)* compositing, using static target dates ([&rarr; Griffiths et al.
+2013](https://ieeexplore.ieee.org/document/6415303)), or dynamic target dates ([&rarr; Frantz et al.
+2017](https://www.sciencedirect.com/science/article/abs/pii/S0034425717300032?via%3Dihub)).
+
 That means that this submodule generates spatially consistent large-area data with high-quality pixel values for a specified date, or a specified phenological status.
 
 #### Input Data
 
 This submodule requires ARD as available in the FORCE Data Cube as input for static target dates.
-Computing dynamic target dates based on surface phenology requires feature input from a Land Surface Phenology (LSP) dataset, which can be generated using the Time Series Analysis submodule.
+Computing dynamic target dates based on surface phenology additionally requires feature input from a Land Surface Phenology (LSP) dataset, which can be generated using the *Time Series Analysis* submodule.
 
 #### Parameter file
 
-Create a Level 3 Compositing parameter file with
-dforce force-parameter parameter-file LEVEL3
-As the Level 3 Compositing submodule creates temporally aggregated data, PROCESSING TIMEFRAME parameters describe the date range, i.e.
-the overarching study period, and day-of-year range, i.e.
-possible seasonal restrictions, of all considered clear-sky observations.
-Depending on whether a Best Available Pixel Composite (BAP) or Phenology Adaptive Compositing (PAC) should be performed, the respective parameters are of importance.
-If you require PAC, set LSP_DO to TRUE.
-Otherwise, the following parameters will be ignored.
-For an encompassing description of parameterization, please see the FORCE documentation.
+You can create a new Level 3 Compositing parameter file with:
+
+```
+dforce force-parameter my-parameter-file.prm LEVEL3
+```
+
+or use/modify the provided example ``force-prm-LEVEL3.prm``.
+
+As the Level 3 Compositing submodule creates temporally aggregated data, ``PROCESSING TIMEFRAME`` parameters describe the date range, i.e.
+the overarching study period, and day-of-year range, i.e. possible seasonal restrictions, of all considered clear-sky observations.
+
+Depending on whether a Best Available Pixel Composite *(BAP)* or Phenology Adaptive Compositing *(PAC)* should be performed, the respective parameters are of importance.
+If you require *PAC*, set ``LSP_DO = TRUE``.
+Otherwise, all *PAC*-related parameters will be ignored.
+For an encompassing description of parameterization, please see the [&rarr; FORCE documentation](https://force-eo.readthedocs.io/en/latest/components/higher-level/l3).
 
 #### Output Data
 
 Output data are organized in the FORCE Data Cube format.
-Example filename: 20160701_LEVEL3_LNDLG_BAP.tif
-Each file name indicates the target date (here: 20160701), the sensor ID of the selected sensor family (e.g.
-Landsat legacy bands: LNDLG), and the product type (e.g.
-Best Available Pixel BAP).
+
+Example filename: ``20160701_LEVEL3_LNDLG_BAP.tif``
+
+Each file name indicates the target date (here: *20160701*), the sensor ID of the selected sensor family (e.g. Landsat legacy bands: *LNDLG*), and the product type (e.g. *Best Available Pixel BAP*).
+
 In the parameter file, the user can select four types of output data.
-OUTPUT_BAP is the best pixel composites, i.e.
-a reflectance product for static target dates.
-The scale is 10000, and nodata value is -9999.
+
+1) ``OUTPUT_BAP`` is the best pixel composites, i.e. a reflectance product.
+The scale is *10000*, and nodata value is *-9999*.
 The product contains multiple bands, which represent wavelengths.
 The number of bands is dependent on the sensor used.
-OUTPUT_INF contains information about the selected observation in the BAP product, for example Quality Assurance Information of the best observation, or the acquisition dates of the BAP composite.
-OUTPUT_SCR contains the scores of the selected observation in the BAP product, i.e.
-information about the adequacy of the selected pixel for the expected target date.
-OUTPUT_OVV is a small quicklook image of the composite without geographic reference.
+
+2) ``OUTPUT_INF`` contains information about the selected observation in the BAP product, for example *Quality Assurance Information* of the best observation, or the *acquisition dates* of the BAP composite.
+
+3) ``OUTPUT_SCR`` contains the scores of the selected observation in the BAP product, i.e. information about the adequacy of the selected pixel for the expected target date.
+
+4) ``OUTPUT_OVV`` is a small quicklook image of the composite without geographic reference.
 
 #### Working Example
 
-CODE-DE users can download a working example of a Level 3 Compositing parameter file here, or directly use the parameter file as follows:
+CODE-DE / EOLab users can use the working example of a Level 3 Compositing parameter file provided in this repository:
+
+```
 dforce force-higher-level force-prm-LEVEL3.prm
-This generates a best-pixel composite for the target year 2020 (target day of year 180) from all Sentinel-2 A and B clear sky observations from 2019 to 2021 for Berlin.
+```
+
+This generates a best-pixel composite for the target year 2020 and target day-of-year 180 from all Sentinel-2A/B clear sky observations based on data from 2019-2021 for Berlin.
 
 #### Further Reading
 
-Please refer to the FORCE Level 3 Compositing documentation with a processing workflow illustration for further detail.
+Please refer to the [&rarr; FORCE Level 3 Compositing documentation](https://force-eo.readthedocs.io/en/latest/components/higher-level/l3/index.html#level3) with a processing workflow illustration for further detail.
 
 ___
 

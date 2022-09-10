@@ -26,7 +26,7 @@ In this tutorial, the principles of data processing with FORCE are introduced *(
     - [&rarr; 5.7. Landscape Metrics](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#57-landscape-metrics)
     - [&rarr; 5.8. User Defined Functions](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#58-user-defined-functions)
 - [&rarr; 6. Jupyter Notebook](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#6-jupyter-notebook)
-- [&rarr; Further Reading](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#further-reading)
+- [&rarr; 7. Further Reading](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md#7-further-reading)
 
 
 
@@ -807,7 +807,7 @@ A Jupyter Notebook is a web interface that allows to combine executable code wit
 
 Please find a Jupyter notebook using FORCE on CODE-DE here.
 
-# Further Reading
+# 7. Further Reading
 
 - [&rarr; FORCE Main reference](http://doi.org/10.3390/rs11091124)
 - [&rarr; FORCE Publications](https://force-eo.readthedocs.io/en/latest/refs.html#refs)

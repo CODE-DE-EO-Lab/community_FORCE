@@ -3,7 +3,7 @@
 This repository collects useful data and examples to run [&rarr; FORCE](https://github.com/davidfrantz/force) on [&rarr; CODE-DE](https://code-de.org/) / [&rarr; EOLab](https://eo-lab.org/de/), and to work with the [&rarr; analysis ready FORCE datacube on CODE-DE](https://code-de.org/de/portfolio/?id=78).
 
 
-## FAQ
+## FAQ / Quick Start
 
 - [&rarr; How to connect to the FORCE datacube collection 1 on CODE-DE / EOLab](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/FAQ/mount.md)
 

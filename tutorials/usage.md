@@ -1,8 +1,8 @@
 # **How to use the FORCE Data Cube Collection 1**
 
-This tutorial describes processing abilities of [&rarr; FORCE *(Framework for Operational Radiometric Correction for Environmental monitoring)*](DEADLINK), a processing engine for medium-resolution Earth Observation image archives.
+This tutorial describes processing abilities of [&rarr; FORCE *(Framework for Operational Radiometric Correction for Environmental monitoring)*](https://github.com/davidfrantz/force), a processing engine for medium-resolution Earth Observation image archives.
 
-FORCE is available to CODE-DE / EOLab users and can directly be used to process Analysis Ready Data *(ARD)* provided by the FORCE Data Cube (see [&rarr; this tutorial](DEADLINK) for more details about the data cube).
+FORCE is available to CODE-DE / EOLab users and can directly be used to process Analysis Ready Data *(ARD)* provided by the FORCE Data Cube (see [&rarr; this tutorial](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md) for more details about the data cube).
 
 In this tutorial, the principles of data processing with FORCE are introduced *(sections 2 and 3)*, followed by an overview over the FORCE higher-level component that offers numerous data processing options based on the FORCE Data Cube *(section 4-5)* - including ready-to-use examples.
 
@@ -36,9 +36,9 @@ In this tutorial, the principles of data processing with FORCE are introduced *(
 Please consider recommendations for citation and acknowledgement.
 
 The recommended way for using FORCE on CODE-DE and EOLab is through Docker
- [&rarr; walkthrough](DEADLINK).
+ [&rarr; walkthrough](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/FAQ/install.md).
 
-For further information, please refer to the [&rarr; FORCE documentation](DEADLINK).
+For further information, please refer to the [&rarr; FORCE documentation](https://force-eo.readthedocs.io/en/latest/index.html).
 
 
 # 2. FORCE processing: Overview
@@ -56,7 +56,7 @@ This includes, for example, data download, or data pooling as well as the genera
 
 CODE-DE / EOLab users can skip this step, and directly access Sentinel-2 and Landsat ARD for complete Germany from 1984 to today via the FORCE Data Cube.
 
-Please refer to [&rarr; this tutorial](DEADLINK) for further information about data pre-processing in the FORCE Data Cube, and to the FORCE [&rarr; documentation](https://force-eo.readthedocs.io/en/latest/index.html) for further information about lower-level functionality.
+Please refer to [&rarr; this tutorial](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md) for further information about data pre-processing in the FORCE Data Cube, and to the FORCE [&rarr; documentation](https://force-eo.readthedocs.io/en/latest/index.html) for further information about lower-level functionality.
 
 ___
 
@@ -80,7 +80,7 @@ That includes, for example, translating external data into a specific ARD data c
 
 # 3. FORCE processing: Getting started
 
-Once properly set up with [&rarr; Docker](DEADLINK), CODE-DE / EOLab users can make use of the full functionality of FORCE, including all submodules.
+Once properly set up with [&rarr; Docker](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/FAQ/install.md), CODE-DE / EOLab users can make use of the full functionality of FORCE, including all submodules.
 
 Users can execute
 
@@ -146,7 +146,7 @@ Feature datasets are, for example, used in machine learning processing.
 
 ## 4.2. Compute Model
 
-The FORCE compute model is closely linked to the organization of data in the data cube (see [&rarr; this article](DEADLINK) about the FORCE Data Cube structure). FORCE uses a mixture of sequential and parallel processing logic at the same time.
+The FORCE compute model is closely linked to the organization of data in the data cube (see [&rarr; this article](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md) about the FORCE Data Cube structure). FORCE uses a mixture of sequential and parallel processing logic at the same time.
 
 ___
 
@@ -184,7 +184,7 @@ Tile allow-lists are an optional input and can be used to limit the analysis to 
 They are particularly useful, as processing time can be reduced when the area of interest has a non-square extent.
 
 Generally, the processing extent is provided by the ``X_TILE_RANGE`` and ``Y_TILE_RANGE`` keys in the parameter files. 
-Minimum and maximum tile identifiers are provided based on the tiling grid (refer to [&rarr; this article](DEADLINK) for further details about the FORCE Data Cube tiling grid or just conveniently download [&rarr; this vector dataset](DEADLINK)).
+Minimum and maximum tile identifiers are provided based on the tiling grid (refer to [&rarr; this article](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md) for further details about the FORCE Data Cube tiling grid or just conveniently download [&rarr; this vector dataset](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/grid/datacube-grid_DEU.gpkg)).
 
 Assuming the region of interest for our analysis is the Federal state of Berlin *(Figure 2)*, we require processing of all tiles marked with an ``X`` (5 tiles).
 Without a tile allow-list, all tiles marked with an ``O`` (1 tile) that are part of the squared extent *(bold box)* would undergo the same processing (in other words: wasted computing time). Using a tile allow-list in our example reduces processing time by *17%*.
@@ -212,7 +212,7 @@ X0070_Y0043
 X0070_Y0044
 ```
 
-The ready-to-go tile allow-list for Berlin and all other states can be [&rarr; downloaded here](DEADLINK).
+The ready-to-go tile allow-list for Berlin and all other states can be [&rarr; downloaded here](https://github.com/CODE-DE-EO-Lab/community_FORCE/tree/main/tile_files).
 
 ___
 

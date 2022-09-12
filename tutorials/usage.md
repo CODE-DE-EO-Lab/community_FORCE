@@ -157,7 +157,7 @@ In the example in *Figure 1*, each image chip has been divided into four blocks 
 Block size (and consequently the number of PUs) can be overruled with the ``BLOCK_SIZE`` key in the parameter file to accommodate situations where available RAM might become an issue. 
 In principle, the PUs are processed sequentially, i.e. one after another.
 
-IMAGE
+![PU](img/PUs.png)
 
 *Figure 1 FORCE compute model: Processing Units (PU) and sequential processing of block structure*
 
@@ -190,7 +190,7 @@ Assuming the region of interest for our analysis is the Federal state of Berlin 
 Without a tile allow-list, all tiles marked with an ``O`` (1 tile) that are part of the squared extent *(bold box)* would undergo the same processing (in other words: wasted computing time). Using a tile allow-list in our example reduces processing time by *17%*.
 
 
-IMAGE
+![allowlist](img/allowlist.png)
 
 *Figure 2: Tiles of interest (green, X) and other tiles (red, O) part of the squared extent of the area of interest (**bold**).
 Example: Berlin, Germany.*
@@ -685,7 +685,7 @@ This file supposes that the CODE-DE user has performed the Time Series Analysis 
 Then, a sampling as described in the Sampling section is required.
 Final maps predict land cover (built-up surfaces, vegetation, soil, water) in the Berlin area (*Figure 3*).
 
-IMAGE
+![MLP](img/MLP.png)
 
 *Figure 3: Land cover as predicted using the above sampling → training → machine learning prediction workflow with a Random Forest Classifier.
 Red: Built-Up Surfaces, Green: Vegetation, Yellow: Soil, Blue.

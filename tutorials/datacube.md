@@ -58,7 +58,7 @@ While Landsat TM/ETM+/OLI data is available at a spatial resolution of 30x30 m p
 
 Level-1 data from all sensors provided in the FORCE Data Cube Collection 1 are pre-processed to ARD according to a standardized workflow (Figure 1).
  
-IMAGE
+![L2PS](img/l2ps.jpg)
 
 *Figure 1: FORCE ARD Processing System Workflow (source: Frantz et al.
 2019, modified).*
@@ -81,7 +81,7 @@ For Sentinel-2, a Cloud Displacement Index was implemented to compensate missing
 Parallax effects make use of slightly different image acquisition angles in spectrally adjacent near infrared bands that have an effect on cloud positioning, and are invisible on land surface features (*Figure 2*).
  The FORCE cloud detection was rigorously assessed in the Cloud Masking Intercomparison eXercise (CMIX, [&rarr; Skakun et al. 2022](https://doi.org/10.1016/j.rse.2022.112990)).
 
-![parallax](https://twitter.com/i/status/1122929908190273537)
+![parallax](img/parallax.gif)
 
 *Figure 2: Parallax effects for cloud detection in Sentinel-2 imagery*
 
@@ -120,10 +120,10 @@ In the FORCE Data Cube Collection 1, those effects were reduced by increasing Se
 2021](https://doi.org/10.1109/LGRS.2020.2982245)).
 Figure 3 illustrates the difference of co-registered and original imagery.
 
-IMAGE
+![coreg](img/coreg.gif)
 
-Figure 3: Animation of original and co-registered Sentinel-2 images on Crete
-Please find more information about how and why to co-register Sentinel-2 data with Landsat data in the [&rarr; FORCE Co-Registration tutorial](https://force-eo.readthedocs.io/en/latest/howto/coreg.html).
+*Figure 3: Animation of original and co-registered Sentinel-2 images on Crete
+Please find more information about how and why to co-register Sentinel-2 data with Landsat data in the [&rarr; FORCE Co-Registration tutorial](https://force-eo.readthedocs.io/en/latest/howto/coreg.html).*
 
 ____
 
@@ -162,7 +162,7 @@ ___
 
 ### 1) Datacube definition
 
-IMAGE
+![cube](img/datacube.jpg)
 
 *Figure 4: The data cube concept in FORCE*
 
@@ -183,7 +183,7 @@ The data cube may contain data from several sensors and different resolutions, s
 The FORCE Data Cube Collection 1 grid uses the *ETRS89-extended / LAEA Europe (EPSG: 3035) projection*.
 The Grid provides Landsat and Sentinel-2 data coverage for all tiles that intersect with German state territory (Figure 5).
 
-IMAGE
+![grid](img/grid.png)
 
 *Figure 5: screenshot Germany with grid, including tile identifiers.
 Spatial extent: lower left 4016030/2654920, upper right 4706030/3584920 (in m).*
@@ -323,7 +323,7 @@ The overview file is a small thumbnail of the actual image chip that allows a qu
 The detected clouds and cloud shadows are colored in pink and cyan.
 Cirrus clouds are drawn in red, snow in yellow, subzero reflectance in teal, and saturated reflectance in brown.
 
-IMAGE
+![ovv](img/ovv.jpg)
 
 *Figure 6: Overview (OVV) image 20210627_LEVEL2_SEN2A_OVV.jpg*
 

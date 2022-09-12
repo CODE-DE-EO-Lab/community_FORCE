@@ -6,8 +6,9 @@ Users can process the data with FORCE as introduced in the [following tutorial](
 
 # 1. Analysis Ready Data and Data cubes
 
-The FORCE Data Cube Collection 1 provides Analysis Ready Data (ARD).
-According to the Committee on Earth Observation Satellites (CEOS), ARD are *satellite data that have been processed to a minimum set of requirements and organized into a form that allows immediate analysis with a minimum of additional user effort and interoperability both through time and with other datasets.*
+The *FORCE Data Cube Collection 1* provides Analysis Ready Data *(ARD)*.
+
+> According to the Committee on Earth Observation Satellites ([&rarr; CEOS](https://ceos.org/ard/)), ARD are *satellite data that have been processed to a minimum set of requirements and organized into a form that allows immediate analysis with a minimum of additional user effort and interoperability both through time and with other datasets.*
 
 Since the reflectance measurements taken onboard the satellite, ARD have undergone a complex process, including radiometric calibration, georectification, the correction of atmospheric and topographic effects, cloud and cloud shadow detection and other acquisition quality-based criteria.
 Finally, ARD are provided in a regular, non-overlapping grid system without any redundancy in a single coordinate system in the form of data cubes.
@@ -31,60 +32,71 @@ Only Level-1 data that fulfilled the following criteria were processed to ARD:
 
 The FORCE Data Cube provides observations of the following sensor types:
 
-- Landsat 4 Thematic Mapper (TM), Collection 2 (technical facts)
-- Landsat 5 Thematic Mapper (TM), Collection 2 (technical facts)
-- Landsat 7 Enhanced Thematic Mapper + (ETM+), Collection 2 (technical facts)
-- Landsat 8 Operational Land Imager (OLI), Collection 2 (technical facts)
-- Landsat 9, Operational Land Imager 2 (OLI2)
-- Sentinel-2A MultiSpectral Instrument (MSI, technical facts)
-- Sentinel-2B MultiSpectral Instrument (MSI, technical facts)
+- Landsat 4 Thematic Mapper (TM), Collection 2 ([technical facts](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-4?qt-science_support_page_related_con=0#qt-science_support_page_related_con))
+- Landsat 5 Thematic Mapper (TM), Collection 2 ([technical facts](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-5?qt-science_support_page_related_con=0#qt-science_support_page_related_con))
+- Landsat 7 Enhanced Thematic Mapper + (ETM+), Collection 2 ([technical facts](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-7?qt-science_support_page_related_con=0#qt-science_support_page_related_con))
+- Landsat 8 Operational Land Imager (OLI), Collection 2 ([technical facts](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-8?qt-science_support_page_related_con=0#qt-science_support_page_related_con))
+- Landsat 9, Operational Land Imager 2 (OLI-2), Collection 2 ([technical facts](https://www.usgs.gov/landsat-missions/landsat-9?qt-science_support_page_related_con=0#qt-science_support_page_related_con))
+- Sentinel-2A MultiSpectral Instrument (MSI, [technical facts](https://sentinel.esa.int/web/sentinel/missions/sentinel-2))
+- Sentinel-2B MultiSpectral Instrument (MSI, [technical facts](https://sentinel.esa.int/web/sentinel/missions/sentinel-2))
 
 While Landsat TM/ETM+/OLI data is available at a spatial resolution of 30x30 m per pixel, the resolution of Sentinel-2 A/B imagery is 10x10 m per pixel.
+
 
 ## 2.2 Pre-Processing and Analysis Ready Data
 
 Level-1 data from all sensors provided in the FORCE Data Cube Collection 1 are pre-processed to ARD according to a standardized workflow (Figure 1).
  
-Figure 1: FORCE ARD Processing System Workflow (source: Frantz et al.
-2019, modified).
-This article explains the components of this workflow and the parameters used for pre-processing data in the FORCE Data Cube Collection 1:
- 
+IMAGE
+
+*Figure 1: FORCE ARD Processing System Workflow (source: Frantz et al.
+2019, modified).*
+
+This article explains the components of this workflow and the parameters used for pre-processing data in the FORCE Data Cube Collection 1.
+
+___
+
 ### Cloud and cloud shadow detection and masking
 
 Data in the FORCE Data Cube Collection 1 have undergone a cloud and cloud shadow detection and masking procedure.
 As optical sensors cannot “see through clouds”, this is necessary to avoid spectral artefacts that do not reveal information about the land surface.
-In the FORCE Data Cube Collection 1, pixels detected opaque clouds are represented as no data (confident cloud category in table xxx).
-Cloud detection was performed by an Fmask algorithm (Zhu et al.
-2012), modified by recent improvements (Frantz et al.
-2015, Zhu et al.
-2015).
-For Sentinel-2, a Cloud Displacement Index was implemented to compensate missing thermal information (such as available in Landsat) employing parallax effects (Frantz et al.
-2018).
-Parallax effects make use of slightly different image acquisition angles in spectrally adjacent near infrared bands that have an effect on cloud positioning, and are invisible on land surface features (Figure xxx).
- The FORCE cloud detection was rigorously assessed in the Cloud Masking Intercomparison eXercise (CMIX, Skakun et al., in revision).
 
-Figure xxx: Parallax effects for cloud detection in Sentinel-2 imagery
+In the FORCE Data Cube Collection 1, pixels detected as opaque clouds are represented as no data (confident cloud category in table 1).
+
+Cloud detection was performed by an Fmask algorithm ([Zhu & Woodcock 2012](https://doi.org/10.1016/j.rse.2011.10.028)), modified by recent improvements ([Frantz et al. 2015](https://doi.org/10.1109/LGRS.2015.2390673), [Zhu et al. 2015](https://doi.org/10.1016/j.rse.2014.12.014)).
+
+For Sentinel-2, a Cloud Displacement Index was implemented to compensate missing thermal information (such as available in Landsat) employing parallax effects ([Frantz et al. 2018](https://doi.org/10.1016/j.rse.2018.04.046)).
+
+Parallax effects make use of slightly different image acquisition angles in spectrally adjacent near infrared bands that have an effect on cloud positioning, and are invisible on land surface features (*Figure 2*).
+ The FORCE cloud detection was rigorously assessed in the Cloud Masking Intercomparison eXercise (CMIX, [Skakun et al. 2022](https://doi.org/10.1016/j.rse.2022.112990)).
+
+IMAGE
+
+*Figure 2: Parallax effects for cloud detection in Sentinel-2 imagery*
+
 After cloud and cloud shadow detection, a buffer mask of 300 m was applied around clouds (90 m around cloud shadow) in order to make sure that hazy transition zones between clouded and non-clouded areas not detected as clouds do not contaminate the image chip.
-Cloud masking information can be found in the QAI output file [link to following section; Data Output].
+
+Cloud masking information can be found in the [QAI output file](link to following section; Data Output).
+
+___
 
 ### Radiometric correction
 
-ARD in the FORCE Data Cube Collection 1 have been atmospherically corrected (Frantz et al.
-2016).
+ARD in the FORCE Data Cube Collection 1 have been atmospherically corrected ([Frantz et al. 2016](https://doi.org/10.1109/TGRS.2016.2530856)).
 Atmospheric correction converts top-of-atmosphere reflectance to bottom-of-atmosphere reflectance (or surface reflectance).
-This was achieved through radiative transfer modelling using multiple scattering assumptions and image-based estimation of atmospheric parameters , e.g.
-aerosol optical depth, as well as water vapor for Sentinel-2).
-Auxiliary information on water vapor was used to correct Landsat data (Frantz et al.
-2019).
+This was achieved through radiative transfer modelling using multiple scattering assumptions and image-based estimation of atmospheric parameters, e.g.
+aerosol optical depth, as well as water vapor for Sentinel-2.
+Auxiliary information on water vapor was used to correct Landsat data ([Frantz et al. 2019](https://doi.org/10.3390/rs11030257)).
+
 The 1 arc-second Copernicus Digital Elevation Model was used to adjust path lengths in the atmospheric correction.
-FORCE’s atmospheric correction functionalities are described in Frantz 2016 and have been globally validated in the Atmospheric Correction Inter-comparison eXercise (ACIX, Doxani et al.
-2018) as well in ACIX II (Doxani et al., in preparation).
+FORCE’s atmospheric correction functionalities are described in [Frantz et al. 2016](https://doi.org/10.1109/TGRS.2016.2530856) and have been globally validated in the Atmospheric Correction Inter-comparison eXercise (ACIX, [Doxani et al.
+2018](https://doi.org/10.3390/rs10020352)) as well in ACIX II (Doxani et al., in preparation).
+
 The ARD were also corrected for other radiometric phenomena like adjacency, bidirectional reflectance distribution function (BRDF), and topographic effects.
 Adjacency effect correction aims to reduce the background contamination with radiation that does not originate from the observed target.
 BRDF correction aims to normalize the reflectance to a standardized view and sun angle.
 Topographic correction aims at removing illumination effects that are introduced by different solar angles in combination with sloped terrain.
-For the latter, an enhanced C-correction (see Buchner et al.
-2020) with the 1 arc-second Copernicus DEM was used.
+For the latter, an enhanced C-correction (see [Buchner et al. 2020](https://doi.org/10.1016/j.rse.2020.111967)) with the 1 arc-second Copernicus DEM was used.
 
 
 ### Co-registration
@@ -93,34 +105,40 @@ ARD from Sentinel-2 A/B image acquisitions in the FORCE Data Cube Collection 1 h
 Co-registration is required for all Sentinel-2 A/B data acquired before the use of the Sentinel-2 Global Reference Image (GRI, Dechoz et al.
 2015).
 These data are affected by a geolocation uncertainty of up to 12m, which corresponds to more than one Sentinel-2 pixel.
-In the FORCE Data Cube Collection 1, those effects were reduced by increasing Sentinel-2 geometric accuracy with a series of Landsat base images (Rufin et al.
-2020).
-Figure xxx illustrates the difference of co-registered and original imagery.
+In the FORCE Data Cube Collection 1, those effects were reduced by increasing Sentinel-2 geometric accuracy with a series of Landsat base images ([Rufin et al.
+2021](https://doi.org/10.1109/LGRS.2020.2982245)).
+Figure 3 illustrates the difference of co-registered and original imagery.
 
-Figure xxx: Animation of original and co-registered Sentinel-2 images on Crete
-Please find more information about how and why to co-register Sentinel-2 data with Landsat data in the FORCE Co-Registration tutorial.
+IMAGE
 
+Figure 3: Animation of original and co-registered Sentinel-2 images on Crete
+Please find more information about how and why to co-register Sentinel-2 data with Landsat data in the [FORCE Co-Registration tutorial](https://force-eo.readthedocs.io/en/latest/howto/coreg.html).
+
+____
 
 ### Resolution Merge
 
-For Sentinel-2 A/B imagery, pre-processing included a resolution merge of the bands that are only available at 20x20 m resolution (red edge bands, broad near-infrared band, and short-wave infrared bands).
-In order to enable further analysis of ARD data with consistent spatial resolution, information at 20x20 m resolution was increased to a resolution of 10x10m using the ImproPhe data fusion approach (Frantz et al.
-2016b).
+For Sentinel-2A/B imagery, pre-processing included a resolution merge of the bands that are only available at 20x20 m resolution (red edge bands, broad near-infrared band, and short-wave infrared bands).
+In order to enable further analysis of ARD data with consistent spatial resolution, information at 20x20 m resolution was increased to a resolution of 10x10m using the ImproPhe data fusion approach ([Frantz et al.
+2016b](https://doi.org/10.1109/TGRS.2016.2537929)).
+
+____
 
 ### Auxiliary Data
 
-A digital elevation model (DEM) mosaic covering the complete study area and a precompiled water vapor database (WVDB) are used for topographic and atmospheric correction of the Level-1 data.
+A digital elevation model *(DEM)* mosaic covering the complete study area and a precompiled water vapor database *(WVDB)* are used for topographic and atmospheric correction of the Level-1 data.
 
 The DEM is used for enhanced cloud shadow detection, atmospheric correction, and to perform the topographic correction.
 In the cloud shadow detection, the DEM is primarily used to distinguish cloud shadows from water and topographic shadows.
 In the atmospheric correction, the DEM is used to scale the optical depths with altitude.
 In the FORCE Data Cube Collection 1, the Copernicus DEM is used for these purposes.
+
 During atmospheric correction, the effect of water vapor absorption can only be corrected if the amount of water vapor in the atmosphere is known.
-Sentinel-2 A/B data includes a water vapor channel to directly estimate water vapor content.
+Sentinel-2A/B data includes a water vapor channel to directly estimate water vapor content.
 In contrast, Landsat sensors do not have such information on board, which is why an external dataset is required.
-The FORCE Data Cube Collection 1 uses a MODIS-based water vapor database providing daily water vapor estimates for the WRS-2 tiles that Landsat Level-1 data is provided in for download.
-Please find a detailed description of the water vapor database of the FORCE Data Cube in Frantz et al.
-(2019).
+The FORCE Data Cube Collection 1 uses a *MODIS*-based water vapor database providing daily water vapor estimates for the WRS-2 tiles that Landsat Level-1 data is provided in for download.
+Please find a detailed description of the water vapor database of the FORCE Data Cube in [Frantz et al. (2019)](https://doi.org/10.3390/rs11030257).
+
 
 ## 2.3 The FORCE Data Cube Collection 1
 

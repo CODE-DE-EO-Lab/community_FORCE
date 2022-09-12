@@ -1,10 +1,21 @@
 # **Analysis Ready Data (ARD) and the FORCE Data Cube Collection 1**
 
 This tutorial describes the Analysis Ready Data provided in the [&rarr; FORCE Data Cube Collection 1](https://code-de.org/de/portfolio/?id=78) on CODE-DE and EOLab.
-Users can process the data with FORCE as introduced in the [&rarr; following tutorial](DEADLINK).
+Users can process the data with FORCE as introduced in the [&rarr; following tutorial](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md).
 
 
-# 1. Analysis Ready Data and Data cubes
+## Table of Content
+
+- [&rarr; 1. Analysis Ready Data and Data Cubes](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md#1-Analysis-Ready-Data-and-Data-Cubes)
+- [&rarr; 2. Data in the FORCE Data Cube Collection 1 on CODE-DE / EOLab](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md#2-Data-in-the-FORCE-Data-Cube-Collection-1-on-CODE-DE--EOLab)
+    - [&rarr; 2.1 Input Data](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md#21-Input-Data)
+    - [&rarr; 2.2 Pre-Processing and Analysis Ready Data](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md#22-Pre-Processing-and-Analysis-Ready-Data)
+    - [&rarr; 2.3 The FORCE Data Cube Collection 1](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md#23-The-FORCE-Data-Cube-Collection-1)
+- [&rarr; 3. Further Reading](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md#3-Further-Reading)
+- [&rarr; 4. How to use Analysis Ready Data in the FORCE Data Cube Collection 1?](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md#4-How-to-use-Analysis-Ready-Data-in-the-FORCE-Data-Cube-Collection-1)
+
+
+# 1. Analysis Ready Data and Data Cubes
 
 The *FORCE Data Cube Collection 1* provides Analysis Ready Data *(ARD)*.
 
@@ -56,7 +67,7 @@ This article explains the components of this workflow and the parameters used fo
 
 ___
 
-### Cloud and cloud shadow detection and masking
+### 1) Cloud and cloud shadow detection and masking
 
 Data in the FORCE Data Cube Collection 1 have undergone a cloud and cloud shadow detection and masking procedure.
 As optical sensors cannot “see through clouds”, this is necessary to avoid spectral artefacts that do not reveal information about the land surface.
@@ -76,11 +87,11 @@ IMAGE
 
 After cloud and cloud shadow detection, a buffer mask of 300 m was applied around clouds (90 m around cloud shadow) in order to make sure that hazy transition zones between clouded and non-clouded areas not detected as clouds do not contaminate the image chip.
 
-Cloud masking information can be found in the [&rarr; QAI output file](link to following section; Data Output).
+Cloud masking information can be found in the QAI output file (see further below).
 
 ___
 
-### Radiometric correction
+### 2) Radiometric correction
 
 ARD in the FORCE Data Cube Collection 1 have been atmospherically corrected ([&rarr; Frantz et al. 2016](https://doi.org/10.1109/TGRS.2016.2530856)).
 Atmospheric correction converts top-of-atmosphere reflectance to bottom-of-atmosphere reflectance (or surface reflectance).
@@ -99,7 +110,7 @@ Topographic correction aims at removing illumination effects that are introduced
 For the latter, an enhanced C-correction (see [&rarr; Buchner et al. 2020](https://doi.org/10.1016/j.rse.2020.111967)) with the 1 arc-second Copernicus DEM was used.
 
 
-### Co-registration
+### 3) Co-registration
 
 ARD from Sentinel-2 A/B image acquisitions in the FORCE Data Cube Collection 1 have been co-registered with Landsat data.
 Co-registration is required for all Sentinel-2 A/B data acquired before the use of the Sentinel-2 Global Reference Image (GRI, Dechoz et al.
@@ -116,7 +127,7 @@ Please find more information about how and why to co-register Sentinel-2 data wi
 
 ____
 
-### Resolution Merge
+### 4) Resolution Merge
 
 For Sentinel-2A/B imagery, pre-processing included a resolution merge of the bands that are only available at 20x20 m resolution (red edge bands, broad near-infrared band, and short-wave infrared bands).
 In order to enable further analysis of ARD data with consistent spatial resolution, information at 20x20 m resolution was increased to a resolution of 10x10m using the ImproPhe data fusion approach ([&rarr; Frantz et al.
@@ -124,7 +135,7 @@ In order to enable further analysis of ARD data with consistent spatial resoluti
 
 ____
 
-### Auxiliary Data
+### 5) Auxiliary Data
 
 A digital elevation model *(DEM)* mosaic covering the complete study area and a precompiled water vapor database *(WVDB)* are used for topographic and atmospheric correction of the Level-1 data.
 
@@ -146,6 +157,10 @@ The FORCE Data Cube Collection 1 makes use of the data cube concept.
 This means that during ARD generation, Level-1 Landsat and Sentinel-2 data are reorganized from WRS-2 and MGRS scene tiles to a common coordinate system and in regular, non-overlapping tiles by splitting the data into image chips.
 Redundancy is prevented by aggregation of same-day/same-sensor data on output, i.e., redundant Level 1 data are not carried to Level 2.
 Figure 4 displays the key elements of the data cube and grid structure as used in the FORCE Data Cube Collection 1.
+
+___
+
+### 1) Datacube definition
 
 IMAGE
 
@@ -173,12 +188,12 @@ IMAGE
 *Figure 5: screenshot Germany with grid, including tile identifiers.
 Spatial extent: lower left 4016030/2654920, upper right 4706030/3584920 (in m).*
 
-The FORCE Data Cube Collection 1 grid can be downloaded as a geopackage file [&rarr; here](DEADLINK).
+The FORCE Data Cube Collection 1 grid can be downloaded as a geopackage file [&rarr; here](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/grid/datacube-grid_DEU.gpkg).
 
 The data cube is accompanied by a data cube definition file Data Cube-definition.prj.
 This file is key for all FORCE further processing of ARD.
 Each higher-level module will save a copy of this file in the corresponding output directory, which must not be modified or removed in order to preserve FORCE functionalities.
-It contains the data cube projection in well-known text *(WKT)*, the grid origin as longitude and latitude, the grid origin as x-coordinate and y-coordinate in projection units, the tile size in meters, and the block size in meters (required for higher-level analysis routines, see [&rarr; usage Tutorial](DEADLINK)).
+It contains the data cube projection in well-known text *(WKT)*, the grid origin as longitude and latitude, the grid origin as x-coordinate and y-coordinate in projection units, the tile size in meters, and the block size in meters (required for higher-level analysis routines, see [&rarr; usage Tutorial](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md)).
 The Data Cube definition file of the FORCE Data Cube Collection 1 looks like this:
 
 ```
@@ -193,7 +208,7 @@ PROJCS["ETRS89 / LAEA Europe",GEOGCS["ETRS89",DATUM["European_Terrestrial_Refere
 
 ___
 
-### Output format and naming conventions
+### 2) Output format and naming conventions
 
 ARD in the FORCE Data Cube Collection 1 are structured according to their tile identifier.
 FORCE has a standardized naming convention for all ARD output files.
@@ -215,9 +230,9 @@ FORCE Data Cube Collection 1 output files are provided as compressed ``GeoTiff``
 
 ___
 
-### FORCE Data Cube Collection 1 product types
+### 3) Product types
 
-#### Bottom-of-atmosphere (BOA)
+#### 3A) Bottom-of-atmosphere reflectance (BOA)
 
 Bottom-of-Atmosphere *(BOA)* reflectance is the standard ARD product in the FORCE Data Cube Collection 1.
 BOA represents multi-band reflectance values of the respective sensor.
@@ -229,7 +244,7 @@ thermal, ultra-blue, water vapor or cirrus bands).
 Landsat ARD contain six bands (*blue, green, red, near infrared, short-wave infrared 1 and 2*), and Sentinel-2 ARD contain ten bands (*Landsat bands plus three red edge bands, and the broad near infrared band*).
 Please see the [&rarr; FORCE documentation](https://force-eo.readthedocs.io/en/latest/components/lower-level/level2/format.html#product-type) for sensor-specific band tables.
 
-#### Quality Assurance Information (QAI)
+#### 3B) Quality Assurance Information (QAI)
 
 The Quality Assurance Information *(QAI)* contains all per-pixel quality information generated by FORCE.
 FORCE provides a description of the quality of each pixel in the form of quality bits.
@@ -286,7 +301,7 @@ For example, the following quality bit sequence represents a poorly illuminated,
 Check out [&rarr; this documentation](https://force-eo.readthedocs.io/en/latest/components/lower-level/level2/format.html#product-type) for further information about single quality bit conditions, and [&rarr; this tutorial](https://force-eo.readthedocs.io/en/latest/howto/qai.html), which explains what quality bits are, how quality bits are implemented in FORCE, how to visualize them, and how to deal with them in further analysis.
 
 
-#### Cloud / Cloud shadow /Snow distance (DST)
+#### 3C) Cloud / Cloud shadow /Snow distance (DST)
 
 The Cloud / cloud shadow / snow distance *(DST)* product gives the distance to the next opaque cloud, buffered cloud, cirrus cloud, cloud shadow or snow.
 The unit is meters, and nodata value is *-9999*.
@@ -294,14 +309,14 @@ This product can be used in FORCE for further analysis to generate Best Availabl
 
 > Note that this is not the actual cloud mask, which can rather be found in the *QAI* product!
 
-#### Haze Optimized Transformation (HOT)
+#### 3D) Haze Optimized Transformation (HOT)
 
 The Haze Optimized Transformation *(HOT)* product contains the HOT index, which is computed on Level-1 Top-of-atmosphere reflectance.
 The HOT is useful to avoid hazy and residual cloud contamination.
 The scale is *10000*, and nodata value is *-9999*.
 This product can be used in FORCE for further analysis to generate Best Available Pixel *(BAP)* composites.
 
-#### Overview (OVV)
+#### 3E) Overview (OVV)
 
 The overview file is the only one that comes as a *.jpg* file without geolocation information.
 The overview file is a small thumbnail of the actual image chip that allows a quick preview without loading the multi-band image chip (Figure 6).
@@ -312,13 +327,13 @@ IMAGE
 
 *Figure 6: Overview (OVV) image 20210627_LEVEL2_SEN2A_OVV.jpg*
 
-#### View zenith (VZN)
+#### 3F) View zenith (VZN)
 
 The View zenith *(VZN)* product contains the view zenith (the average view zenith for Sentinel-2, and an approximated view zenith for Landsat).
 The scale is *100*, and nodata value is *-9999*.
 This product can be used in FORCE for further analysis to generate Best Available Pixel *(BAP)* composites.
 
-# Further Reading
+# 3. Further Reading
 
 - [&rarr; FORCE Code and entry point](https://github.com/davidfrantz/force)
 - [&rarr; FORCE Main reference](http://doi.org/10.3390/rs11091124)
@@ -329,7 +344,7 @@ This product can be used in FORCE for further analysis to generate Best Availabl
 - [&rarr; FORCE on Twitter](https://twitter.com/search?q=%23FORCE_EO&src=recent_search_click)
 
 
-# How to use Analysis Ready Data in the FORCE Data Cube Collection 1?
+# 4. How to use Analysis Ready Data in the FORCE Data Cube Collection 1?
 
 ARD provided by the FORCE Data Cube Collection 1 can be further processed and analyzed by CODE-DE users using FORCE processing functionalities.
 Please use [&rarr; this tutorial](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md) as a starting point and the FORCE documentation for a more detailed description.

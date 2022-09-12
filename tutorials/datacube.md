@@ -81,7 +81,7 @@ For Sentinel-2, a Cloud Displacement Index was implemented to compensate missing
 Parallax effects make use of slightly different image acquisition angles in spectrally adjacent near infrared bands that have an effect on cloud positioning, and are invisible on land surface features (*Figure 2*).
  The FORCE cloud detection was rigorously assessed in the Cloud Masking Intercomparison eXercise (CMIX, [&rarr; Skakun et al. 2022](https://doi.org/10.1016/j.rse.2022.112990)).
 
-IMAGE
+![parallax](https://twitter.com/i/status/1122929908190273537)
 
 *Figure 2: Parallax effects for cloud detection in Sentinel-2 imagery*
 

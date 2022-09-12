@@ -1,5 +1,8 @@
 # **Analysis Ready Data (ARD) and the FORCE Data Cube Collection 1**
 
+(C) 2021-2022 Franz Schug, David Frantz
+___
+
 This tutorial describes the Analysis Ready Data provided in the [&rarr; FORCE Data Cube Collection 1](https://code-de.org/de/portfolio/?id=78) on CODE-DE and EOLab.
 Users can process the data with FORCE as introduced in the [&rarr; following tutorial](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/usage.md).
 

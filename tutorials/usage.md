@@ -1,5 +1,8 @@
 # **How to use the FORCE Data Cube Collection 1**
 
+(C) 2021-2022 Franz Schug, David Frantz
+___
+
 This tutorial describes processing abilities of [&rarr; FORCE *(Framework for Operational Radiometric Correction for Environmental monitoring)*](https://github.com/davidfrantz/force), a processing engine for medium-resolution Earth Observation image archives.
 
 FORCE is available to CODE-DE / EOLab users and can directly be used to process Analysis Ready Data *(ARD)* provided by the FORCE Data Cube (see [&rarr; this tutorial](https://github.com/CODE-DE-EO-Lab/community_FORCE/blob/main/tutorials/datacube.md) for more details about the data cube).

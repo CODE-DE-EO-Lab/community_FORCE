@@ -160,7 +160,7 @@ In the example in *Figure 1*, each image chip has been divided into four blocks 
 Block size (and consequently the number of PUs) can be overruled with the ``BLOCK_SIZE`` key in the parameter file to accommodate situations where available RAM might become an issue. 
 In principle, the PUs are processed sequentially, i.e. one after another.
 
-![PU](img/PUs.png =400x)
+![PU](img/PUs.png =400x200)
 
 *Figure 1 FORCE compute model: Processing Units (PU) and sequential processing of block structure*
 
